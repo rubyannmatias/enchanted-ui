@@ -165,6 +165,7 @@ export interface ColorType extends ColorPartial {
     'BLACK38P'?: string;
     'BLACK32P'?: string;
     'BLACK20P'?: string;
+    'BLACK15P'?: string;
     'BLACK12P'?: string;
     'BLACK8P'?: string;
     'BLACK7P'?: string;
@@ -416,6 +417,7 @@ export declare enum ColorNames {
     BLACK38P = "BLACK38P",
     BLACK32P = "BLACK32P",
     BLACK20P = "BLACK20P",
+    BLACK15P = "BLACK15P",
     BLACK12P = "BLACK12P",
     BLACK8P = "BLACK8P",
     BLACK7P = "BLACK7P",

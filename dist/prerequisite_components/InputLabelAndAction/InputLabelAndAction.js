@@ -99,6 +99,8 @@ exports.MuiInputActionLink = (0, material_1.styled)(Link_1.default)((theme) => {
         }, ':focus': {
             border: 0,
             fontWeight: 600,
+        }, ':hover': {
+            cursor: 'pointer',
         }, float: 'right', ':not(:first-of-type)': {
             borderRight: `1px solid ${theme.theme.palette.border.secondary}`,
             padding: '0 4px', // 4px padding between action link and border divider for multiple action links
@@ -133,7 +135,7 @@ const renderInputLabelAndAction = (props) => {
                         },
                     };
                 } }, limitedActionProps && limitedActionProps.map((actionProp, index) => {
-                return (react_1.default.createElement(exports.MuiInputActionLink, { disabled: props.disabled, href: actionProp.href, underline: "none", sx: { display: 'inline' }, 
+                return (react_1.default.createElement(exports.MuiInputActionLink, { disabled: props.disabled, href: actionProp.href, onClick: actionProp.handleClick, underline: "none", sx: { display: 'inline' }, 
                     // eslint-why index is not the sole key definition, it is prefixed by other identifiers
                     // eslint-disable-next-line react/no-array-index-key
                     key: `${actionProp.label}-${index}` }, actionProp.label));

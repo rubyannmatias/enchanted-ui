@@ -220,6 +220,7 @@ const PALETTE_LIGHT = {
         disabled: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK38P)),
         disabledBackground: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.NEUTRALGREY150)),
         disabledOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK8P)),
+        disableOpacityHover: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK15P)),
         focus: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07)),
         focusOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07_12P)),
         inverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.WHITE80P)),

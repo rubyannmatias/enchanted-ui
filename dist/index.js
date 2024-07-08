@@ -151,9 +151,9 @@ var SearchCriteria_1 = require("./composite_components/SearchCriteria");
 Object.defineProperty(exports, "SearchCriteria", { enumerable: true, get: function () { return __importDefault(SearchCriteria_1).default; } });
 __exportStar(require("./composite_components/SearchCriteria"), exports);
 /* Place hidden component module exports here below */
-var Accordion_1 = require("./hidden_components/Accordion");
+var Accordion_1 = require("./Accordion");
 Object.defineProperty(exports, "Accordion", { enumerable: true, get: function () { return __importDefault(Accordion_1).default; } });
-__exportStar(require("./hidden_components/Accordion"), exports);
+__exportStar(require("./Accordion"), exports);
 var ButtonGroup_1 = require("./hidden_components/ButtonGroup");
 Object.defineProperty(exports, "ButtonGroup", { enumerable: true, get: function () { return __importDefault(ButtonGroup_1).default; } });
 __exportStar(require("./hidden_components/ButtonGroup"), exports);

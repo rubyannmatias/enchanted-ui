@@ -49,6 +49,7 @@ declare module '@mui/material/styles' {
         disabledInverse?: string;
         disabledOpacityModified?: string;
         focusOpacityModified?: string;
+        disableOpacityHover?: string;
     }
     interface PaletteOptions {
         border: TypeBorder;

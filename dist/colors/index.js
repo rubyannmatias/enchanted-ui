@@ -293,6 +293,7 @@ var ColorNames;
     ColorNames["BLACK38P"] = "BLACK38P";
     ColorNames["BLACK32P"] = "BLACK32P";
     ColorNames["BLACK20P"] = "BLACK20P";
+    ColorNames["BLACK15P"] = "BLACK15P";
     ColorNames["BLACK12P"] = "BLACK12P";
     ColorNames["BLACK8P"] = "BLACK8P";
     ColorNames["BLACK7P"] = "BLACK7P";
@@ -534,6 +535,7 @@ exports.Colors = new Map([
     [ColorNames.BLACK38P, black_1.default.BLACK38P],
     [ColorNames.BLACK32P, black_1.default.BLACK32P],
     [ColorNames.BLACK20P, black_1.default.BLACK20P],
+    [ColorNames.BLACK15P, black_1.default.BLACK15P],
     [ColorNames.BLACK12P, black_1.default.BLACK12P],
     [ColorNames.BLACK8P, black_1.default.BLACK8P],
     [ColorNames.BLACK7P, black_1.default.BLACK7P],

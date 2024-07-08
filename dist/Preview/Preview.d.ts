@@ -59,6 +59,7 @@ export interface PreviewProps {
     overrideHandleNext?: () => void;
     isFetchingAssets?: boolean;
     customHeaderTitle?: string;
+    handleError?: (event: React.SyntheticEvent<HTMLVideoElement | HTMLImageElement, Event>) => void;
 }
 export declare enum PreviewTestIds {
     PREVIEW_SELECT_BUTTON = "previewSelectButton",

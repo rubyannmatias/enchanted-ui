@@ -222,7 +222,7 @@ const zoomOptions = [
     325,
     400,
 ];
-const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelectButtonDisabled, selectButtonTitle, onClickBackButton, handleSelect, handleDownload, tooltipTexts, isNextButtonDisabled, isPreviousButtonDisabled, overrideHandleNext, overrideHandlePrevious, isFetchingAssets = false, customHeaderTitle, }) => {
+const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelectButtonDisabled, selectButtonTitle, onClickBackButton, handleSelect, handleDownload, tooltipTexts, isNextButtonDisabled, isPreviousButtonDisabled, overrideHandleNext, overrideHandlePrevious, isFetchingAssets = false, customHeaderTitle, handleError, }) => {
     var _a, _b;
     const fallbackAssetValue = [
         {
@@ -473,13 +473,19 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                                 opacity: isCurrentAssetReady ? 1 : 0,
                             }, onLoadedData: () => {
                                 handleResize();
+                            }, onError: (e) => {
+                                if (handleError)
+                                    handleError(e);
                             } },
                             React.createElement("source", { "data-testid": PreviewTestIds.PREVIEW_VIDEO_PLAYER, src: currentRendition.source, type: (_a = currentAsset.mediaType) === null || _a === void 0 ? void 0 : _a.mimeType }))));
                 }
                 return (React.createElement(StyledImage, { key: currentRendition.source, ref: imageRef, "data-testid": PreviewTestIds.PREVIEW_IMAGE, src: currentRendition.source, sx: {
                         transform: `scale(${zoomPercentage / 100})`,
                         opacity: isCurrentAssetReady ? 1 : 0,
-                    }, draggable: "true", onLoad: handleImageLoad }));
+                    }, draggable: "true", onLoad: handleImageLoad, onError: (e) => {
+                        if (handleError)
+                            handleError(e);
+                    } }));
         }
     };
     return (React.createElement(Backdrop_1.default, { open: open, sx: {

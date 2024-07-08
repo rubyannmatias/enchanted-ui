@@ -74,8 +74,8 @@ export { default as MultipleSelectChip } from './composite_components/MultipleSe
 export * from './composite_components/MultipleSelectChip';
 export { default as SearchCriteria } from './composite_components/SearchCriteria';
 export * from './composite_components/SearchCriteria';
-export { default as Accordion } from './hidden_components/Accordion';
-export * from './hidden_components/Accordion';
+export { default as Accordion } from './Accordion';
+export * from './Accordion';
 export { default as ButtonGroup } from './hidden_components/ButtonGroup';
 export * from './hidden_components/ButtonGroup';
 export { default as Drawer } from './hidden_components/Drawer';

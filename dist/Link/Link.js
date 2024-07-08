@@ -28,9 +28,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMuiLinkThemeOverrides = void 0;
+exports.getMuiLinkThemeOverrides = exports.LinkType = void 0;
 const react_1 = __importDefault(require("react"));
 const Link_1 = __importDefault(require("@mui/material/Link"));
+var LinkType;
+(function (LinkType) {
+    LinkType["PRIMARY"] = "primary";
+    LinkType["NEUTRAL_PRIMARY"] = "neutralPrimary";
+    LinkType["NEUTRAL_SECONDARY"] = "neutralSecondary";
+})(LinkType = exports.LinkType || (exports.LinkType = {}));
 /**
  * Override out of the box styling from mui to align with designer theme
  * @returns override Link component styles and prop
@@ -45,9 +51,8 @@ const getMuiLinkThemeOverrides = () => {
                 paragraph: false,
             },
             styleOverrides: {
-                root: ({ theme }) => {
-                    return {
-                        '&[disabled]': {
+                root: ({ ownerState, theme }) => {
+                    return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ '&[disabled]': {
                             color: theme.palette.text.disabled,
                             cursor: 'default',
                             pointerEvents: 'none',
@@ -57,25 +62,38 @@ const getMuiLinkThemeOverrides = () => {
                             '&:focus': {
                                 border: 'transparent 1px solid',
                             },
-                        },
-                        '&:hover': {
-                            color: theme.palette.primary.dark,
-                            textDecorationColor: theme.palette.primary.dark,
-                        },
-                        '&.Mui-focusVisible': {
+                        }, '&:hover': Object.assign(Object.assign({ color: theme.palette.primary.main, textDecorationColor: theme.palette.primary.main }, ownerState.hoverBackground === true && {
+                            background: theme.palette.action.hover,
+                            borderRadius: '2px',
+                        }), ownerState.hoverBackground === false && {
+                            background: 'none',
+                        }), '&.force-to-hover': {
+                            color: theme.palette.primary.main,
+                            textDecorationColor: theme.palette.primary.main,
+                            background: theme.palette.action.hover,
+                            borderRadius: '2px',
+                        }, '&.force-to-focus': {
+                            border: `${theme.palette.primary.main} 1px solid`,
+                            outline: 'none',
+                            borderRadius: '2px',
+                        }, '&.Mui-focusVisible': {
                             border: `${theme.palette.primary.main} 1px solid`,
                             outline: 'none',
                             borderRadius: '2px',
                             '&:hover': {
-                                color: theme.palette.primary.dark,
-                                textDecorationColor: theme.palette.primary.dark,
+                                color: theme.palette.primary.main,
+                                textDecorationColor: theme.palette.primary.main,
+                                borderRadius: '2px',
                             },
-                        },
-                        paddingLeft: '2px',
-                        paddingRight: '2px',
-                        display: 'inline-block',
-                        border: 'transparent 1px solid',
-                    };
+                        } }, ownerState.spacing === true && {
+                        margin: '0px 3px 0px 3px',
+                    }), { padding: '1px 3px 1px 3px', display: 'inline-block', border: 'transparent 1px solid' }), ownerState.type === LinkType.PRIMARY && {
+                        color: theme.palette.primary.main,
+                    }), ownerState.type === LinkType.NEUTRAL_SECONDARY && {
+                        color: theme.palette.text.secondary,
+                    }), ownerState.type === LinkType.NEUTRAL_PRIMARY && {
+                        color: theme.palette.text.primary,
+                    });
                 },
                 underlineAlways: ({ theme }) => {
                     return {
@@ -94,5 +112,9 @@ const Link = (_a) => {
 };
 Link.defaultProps = {
     disabled: false,
+    type: LinkType.PRIMARY,
+    spacing: false,
+    hoverBackground: true,
+    underline: 'hover',
 };
 exports.default = Link;
