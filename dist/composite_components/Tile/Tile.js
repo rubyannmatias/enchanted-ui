@@ -71,6 +71,9 @@ const StyledImageListItem = (0, styles_1.styled)(material_1.ImageListItem)(({ th
                 backgroundColor: !disabled && theme.palette.action.hover,
             },
         },
+        '.visible': {
+            opacity: 1,
+        },
     };
 });
 exports.StyledBox = (0, styles_1.styled)(material_1.Box)(({ theme }) => {
@@ -120,10 +123,11 @@ const StyledImageListItembar = (0, styles_1.styled)(material_1.ImageListItemBar)
     const { hasThumbnail } = react_1.default.useContext(ImageListContext);
     return {
         padding: '7px',
-        height: '46px',
+        height: 'auto',
         borderTop: hasThumbnail ? `1px solid ${theme.palette.border.secondary}` : 'none',
         '& .MuiImageListItemBar-titleWrap': {
             padding: '0px',
+            marginTop: '3px',
         },
         '& .MuiImageListItemBar-actionIcon': {
             padding: '0px 0px 0px 8px',
@@ -169,6 +173,7 @@ const Tile = (props) => {
     const subTitleRef = (0, react_1.useRef)(null);
     const [isTitleOverflowing, setIsTitleOverflowing] = (0, react_1.useState)(false);
     const [isSubTitleOverflowing, setIsSubTitleOverflowing] = (0, react_1.useState)(false);
+    const [isOverlayVisible, setIsOverlayVisible] = (0, react_1.useState)(false);
     const { itemId, imageUrl, avatar, itemClickedAction, handlePreviewAction, tileActions, activeItem, imageAltName, ariaLabel, ariaLabelledBy, overflowTooltip, tileRef, hideAvatarIfImageIsLoaded, subTitle, menuSize, hasCheckBox, hasThumbnail, disabled, } = props;
     (0, react_1.useEffect)(() => {
         const titleElement = titleRef.current;
@@ -205,7 +210,11 @@ const Tile = (props) => {
         return { disabled, isChecked, hasThumbnail };
     }, [isChecked, disabled, hasThumbnail]);
     return (react_1.default.createElement(ImageListContext.Provider, { value: contextValue },
-        react_1.default.createElement(StyledImageListItem, { key: itemId, onClick: (event) => { return handleTileClick(event, itemId); }, tabIndex: 0, role: "listitem", "aria-current": activeItem === itemId, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, ref: tileRef },
+        react_1.default.createElement(StyledImageListItem, { key: itemId, onClick: (event) => { return handleTileClick(event, itemId); }, onKeyDown: (event) => {
+                if (event.key === 'Enter') {
+                    handleTileClick(event, itemId);
+                }
+            }, tabIndex: 0, role: "listitem", "aria-current": activeItem === itemId, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, ref: tileRef },
             (imageUrl && !avatar && hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement("img", { style: {
                         display: 'block',
@@ -213,8 +222,8 @@ const Tile = (props) => {
                         height: '100%',
                         objectFit: 'cover',
                     }, src: imageUrl, alt: imageAltName || '' }),
-                !disabled && (react_1.default.createElement(Overlay, { className: "overlay" },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); } },
+                !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
                         react_1.default.createElement(CustomIconView, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, "Preview"))))),
             (imageUrl && avatar) && (isImageLoaded && hideAvatarIfImageIsLoaded) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
@@ -224,20 +233,20 @@ const Tile = (props) => {
                         height: '100%',
                         objectFit: 'cover',
                     }, src: imageUrl, alt: imageAltName || '' }),
-                !disabled && (react_1.default.createElement(Overlay, { className: "overlay" },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); } },
+                !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
                         react_1.default.createElement(CustomIconView, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, "Preview"))))),
             (imageUrl && avatar) && (!hideAvatarIfImageIsLoaded || (!isImageLoaded)) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement(exports.StyledBox, null, avatar),
-                !disabled && (react_1.default.createElement(Overlay, { className: "overlay" },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); } },
+                !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
                         react_1.default.createElement(CustomIconView, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, "Preview"))))),
             (!imageUrl && avatar) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement(exports.StyledBox, null, avatar),
-                !disabled && (react_1.default.createElement(Overlay, { className: "overlay" },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); } },
+                !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
                         react_1.default.createElement(CustomIconView, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, "Preview"))))),
             react_1.default.createElement(StyledImageListItembar, { className: "image-list-item-bar", title: (react_1.default.createElement(material_1.Box, { sx: { display: 'flex', alignItems: 'flex-start' } },
