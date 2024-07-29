@@ -58,11 +58,10 @@ const close_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carb
 const Panel_1 = require("./Panel");
 const Typography_1 = __importDefault(require("../Typography/Typography"));
 const IconButton_1 = __importStar(require("../IconButton/IconButton"));
+const Tooltip_1 = __importDefault(require("../Tooltip/Tooltip"));
 const PanelTabContentStyled = (0, styles_1.styled)(material_1.Grid)((props) => {
-    const { theme } = props;
     return {
         width: '260px',
-        borderLeft: `solid 1px ${theme.palette.border.primary}`,
         overflow: 'hidden',
     };
 });
@@ -100,7 +99,7 @@ const CloseButtonStyled = (0, styles_1.styled)(IconButton_1.default)((props) => 
     };
 });
 const PanelTabContent = (_a) => {
-    var { selectedTabValue, tabs, open, variant, toggleClose } = _a, props = __rest(_a, ["selectedTabValue", "tabs", "open", "variant", "toggleClose"]);
+    var { selectedTabValue, tabs, open, variant, toggleClose, translation } = _a, props = __rest(_a, ["selectedTabValue", "tabs", "open", "variant", "toggleClose", "translation"]);
     return (React.createElement(React.Fragment, null, tabs.map((tab, index) => {
         const key = index;
         return (React.createElement(React.Fragment, { key: key }, selectedTabValue === index && (React.createElement(PanelTabContentStyled, { flexGrow: 1, flexShrink: 0 },
@@ -110,10 +109,11 @@ const PanelTabContent = (_a) => {
                         React.createElement(PanelTitle, { variant: "subtitle1" }, tab.content.title)),
                     React.createElement(PanelActions, { container: true, direction: "row", justifyContent: "flex-end", alignItems: "center" },
                         React.createElement(material_1.Grid, null, tab.content.actionHeaderBar),
-                        React.createElement(CloseButtonStyled, { variant: IconButton_1.IconButtonVariants.WITH_PADDING, onClick: () => {
-                                return toggleClose ? toggleClose(!open) : null;
-                            } },
-                            React.createElement(close_1.default, null)))),
+                        toggleClose && (React.createElement(Tooltip_1.default, { title: (translation && translation.closeButtonTooltip) ? translation.closeButtonTooltip : '' },
+                            React.createElement(CloseButtonStyled, { variant: IconButton_1.IconButtonVariants.WITH_PADDING, onClick: () => {
+                                    return toggleClose ? toggleClose(!open) : null;
+                                } },
+                                React.createElement(close_1.default, null)))))),
                 React.createElement(TabBodyStyled, { "data-testid": "panel-body", variant: variant, maxHeight: tab.content.maxHeight },
                     React.createElement(material_1.Grid, null, tab.content.body)))))));
     })));

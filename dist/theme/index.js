@@ -29,12 +29,12 @@ const Typography_1 = require("../Typography");
 const FormControlLabel_1 = require("../prerequisite_components/FormControlLabel");
 const Alert_1 = require("../Alert");
 const Pagination_1 = require("../Pagination");
-const List_1 = require("../hidden_components/List/List");
-const ListItem_1 = require("../hidden_components/List/ListItem");
-const ListItemAvatar_1 = require("../hidden_components/List/ListItemAvatar");
-const ListItemButton_1 = require("../hidden_components/List/ListItemButton");
-const ListItemIcon_1 = require("../hidden_components/List/ListItemIcon");
-const ListItemText_1 = require("../hidden_components/List/ListItemText");
+const List_1 = require("../List/List");
+const ListItem_1 = require("../List/ListItem");
+const ListItemAvatar_1 = require("../List/ListItemAvatar");
+const ListItemButton_1 = require("../List/ListItemButton");
+const ListItemIcon_1 = require("../List/ListItemIcon");
+const ListItemText_1 = require("../List/ListItemText");
 const ensureToGetColor = (color) => {
     if (color === undefined) {
         return colors_1.UNKNOWN_COLOR_CODE;

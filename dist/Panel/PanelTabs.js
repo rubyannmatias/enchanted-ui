@@ -42,22 +42,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __importStar(require("react"));
 const styles_1 = require("@mui/material/styles");
+const double_left_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/apps/es/double-left"));
+const double_right_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/apps/es/double-right"));
 const Tabs_1 = __importDefault(require("../Tabs/Tabs"));
 const Tab_1 = __importDefault(require("../Tabs/Tab"));
-const PanelTabsStyled = (0, styles_1.styled)(Tabs_1.default)((props) => {
+const IconButton_1 = __importStar(require("../IconButton/IconButton"));
+const theme_1 = require("../theme");
+const Tooltip_1 = __importDefault(require("../Tooltip/Tooltip"));
+const PanelTabContainerStyled = (0, styles_1.styled)('div')((props) => {
     const { theme } = props;
     return {
         borderLeft: `solid 1px ${theme.palette.border.primary}`,
+        borderRight: `solid 1px ${theme.palette.border.primary}`,
         width: '41px',
         maxWidth: '41px',
-        padding: '10px 0',
-        '.MuiTabs-indicator': {
-            backgroundColor: theme.palette.text.secondary,
-            maxHeight: '20px',
-            margin: '10px 0',
-            position: 'center',
-            marginRight: '2px',
-        },
+        position: 'relative',
+    };
+});
+const ToggleButtonContainerStyled = (0, styles_1.styled)('div')(() => {
+    return {
+        position: 'absolute',
+        bottom: '0px',
+        padding: '8px 0',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    };
+});
+const PanelTabsStyled = (0, styles_1.styled)(Tabs_1.default)((props) => {
+    const { theme } = props;
+    return {
+        padding: '8px 0',
         '& button:hover': {
             backgroundColor: theme.palette.action.hover,
         },
@@ -85,11 +101,31 @@ const TabStyled = (0, styles_1.styled)(Tab_1.default)((props) => {
         maxHeight: '40px',
     };
 });
-const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, }) => {
-    return (React.createElement(PanelTabsStyled, { value: selectedTabValue, onChange: handleTabChange, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
-        const key = index;
-        return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: tab.tabIcon.icon, "aria-label": tab.tabIcon.label, disableFocusRipple: true }));
-    })));
+const getArrowIcon = (isPanelCollapsed) => {
+    const theme = (0, styles_1.useTheme)();
+    if (theme.direction === theme_1.ThemeDirectionType.RTL && isPanelCollapsed) {
+        return React.createElement(double_right_1.default, null);
+    }
+    if (theme.direction === theme_1.ThemeDirectionType.RTL && !isPanelCollapsed) {
+        return React.createElement(double_left_1.default, null);
+    }
+    if (theme.direction !== theme_1.ThemeDirectionType.RTL && isPanelCollapsed) {
+        return React.createElement(double_left_1.default, null);
+    }
+    return React.createElement(double_right_1.default, null);
+};
+const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, isPanelCollapsed, togglePanel, translation, }) => {
+    return (React.createElement(PanelTabContainerStyled, null,
+        React.createElement(PanelTabsStyled, { value: selectedTabValue, onChange: handleTabChange, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
+            const key = index;
+            const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label }, tab.tabIcon.icon));
+            return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true }));
+        })),
+        togglePanel
+            ? (React.createElement(ToggleButtonContainerStyled, null,
+                React.createElement(Tooltip_1.default, { title: translation && translation.toggleButtonTooltip ? translation.toggleButtonTooltip : '' },
+                    React.createElement(IconButton_1.default, { size: "small", variant: IconButton_1.IconButtonVariants.WITHOUT_PADDING, onClick: togglePanel, "aria-expanded": !isPanelCollapsed, "aria-controls": "panelContent", "aria-label": "Toggle panel" }, getArrowIcon(isPanelCollapsed)))))
+            : null));
 };
 PanelTabs.defaultProps = {};
 exports.default = PanelTabs;

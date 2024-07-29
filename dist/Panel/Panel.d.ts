@@ -19,17 +19,26 @@ export interface TabsPanelProps {
     tabIcon: TabIconProps;
     content: TabContentProps;
 }
+export interface PanelLocalization {
+    closeButtonTooltip?: string;
+    toggleButtonTooltip?: string;
+}
 export interface InspectorPanelProps extends DrawerProps {
     open: boolean;
     tabList: TabsPanelProps[];
     selectedTabValue?: number;
     hideSidebar?: boolean;
     panelVariant: PanelVariants;
-    toggleClose(isCollapsed: boolean): void;
+    toggleClose?(isCollapsed: boolean): void;
     handleTabChange?: (event: React.ChangeEvent<{}>, tabIndex: number) => void;
+    togglePanel?: (event: React.ChangeEvent<{}>) => void;
+    isPanelCollapsed?: boolean;
+    translation?: PanelLocalization | undefined;
 }
 export interface PanelProps {
     hideSidebar?: boolean;
+    isPanelCollapsed?: boolean;
+    translation?: PanelLocalization;
 }
 declare const Panel: React.FC<InspectorPanelProps>;
 export default Panel;

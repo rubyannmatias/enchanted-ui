@@ -72,6 +72,10 @@ const StyledTabs = (0, styles_1.styled)(Tabs_1.default)((props) => {
         },
         '& .MuiTab-root': {
             border: '1px solid transparent',
+            justifyContent: props.orientation === 'horizontal' ? 'center' : 'flex-start',
+        },
+        '& .MuiTouchRipple-root': {
+            display: 'none',
         },
         '& .MuiTab-root:focus': {
             border: `1px solid ${theme.palette.action.focus}`,
@@ -85,7 +89,7 @@ const StyledTabs = (0, styles_1.styled)(Tabs_1.default)((props) => {
 });
 const Tabs = (_a) => {
     var props = __rest(_a, []);
-    const [value, setValue] = (0, react_1.useState)(0);
+    const [value, setValue] = (0, react_1.useState)(props.value || 0);
     const [indicatorStyle, setIndicatorStyle] = (0, react_1.useState)({});
     const tabsRef = (0, react_1.useRef)(null);
     /**

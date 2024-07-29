@@ -49,7 +49,7 @@ const getMuiListItemIconThemeOverrides = () => {
     return {
         MuiListItemIcon: {
             styleOverrides: {
-                root: () => {
+                root: ({ ownerState, theme }) => {
                     return ({});
                 },
             },
@@ -61,6 +61,5 @@ const ListItemIcon = (_a) => {
     var props = __rest(_a, []);
     return react_1.default.createElement(ListItemIcon_1.default, Object.assign({}, props));
 };
-ListItemIcon.defaultProps = {};
 __exportStar(require("@mui/material/ListItemIcon"), exports);
 exports.default = ListItemIcon;

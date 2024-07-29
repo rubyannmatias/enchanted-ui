@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { PanelVariants, TabsPanelProps } from './Panel';
+import { PanelLocalization, PanelVariants, TabsPanelProps } from './Panel';
 export interface PanelTabContentProps {
     open: boolean;
     selectedTabValue: number;
     variant: PanelVariants;
-    toggleClose(isClosed: boolean): void;
+    toggleClose?(isClosed: boolean): void;
     tabs: Array<TabsPanelProps>;
+    translation: PanelLocalization | undefined;
 }
 export interface TabBodyProps {
     variant: PanelVariants;

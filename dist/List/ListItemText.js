@@ -46,14 +46,16 @@ exports.getMuiListItemTextThemeOverrides = void 0;
 const react_1 = __importDefault(require("react"));
 const material_1 = require("@mui/material");
 const ListItemText_1 = __importDefault(require("@mui/material/ListItemText"));
-const Tooltip_1 = __importDefault(require("../../Tooltip"));
-const domUtils_1 = require("../../utils/domUtils");
+const Tooltip_1 = __importDefault(require("../Tooltip"));
+const domUtils_1 = require("../utils/domUtils");
 const getMuiListItemTextThemeOverrides = () => {
     return {
         MuiListItemText: {
             styleOverrides: {
-                root: () => {
-                    return ({});
+                root: ({ ownerState, theme }) => {
+                    return {
+                        margin: '0',
+                    };
                 },
             },
         },
@@ -83,7 +85,7 @@ const ListItemText = (_a) => {
         }
     }, [listRef, tooltip, forceTooltip]);
     let primaryReactNode = props.primary;
-    let secondaryReactNode = props.secondary;
+    let secondaryReactNode = props.secondary && props.secondary;
     if (tooltipValue) {
         primaryReactNode = (react_1.default.createElement(Tooltip_1.default, { title: tooltipValue, placement: tooltipPlacement },
             react_1.default.createElement(material_1.Grid, { container: true },

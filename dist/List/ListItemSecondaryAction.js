@@ -27,27 +27,16 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMuiListItemThemeOverrides = void 0;
+exports.getMuiListItemSecondaryActionThemeOverrides = void 0;
 const react_1 = __importDefault(require("react"));
-const ListItem_1 = __importDefault(require("@mui/material/ListItem"));
-const getMuiListItemThemeOverrides = () => {
+const ListItemSecondaryAction_1 = __importDefault(require("@mui/material/ListItemSecondaryAction"));
+const getMuiListItemSecondaryActionThemeOverrides = () => {
     return {
-        MuiListItem: {
+        MuiListItemSecondaryAction: {
             styleOverrides: {
                 root: () => {
                     return ({});
@@ -56,11 +45,10 @@ const getMuiListItemThemeOverrides = () => {
         },
     };
 };
-exports.getMuiListItemThemeOverrides = getMuiListItemThemeOverrides;
-const ListItem = (_a) => {
-    var props = __rest(_a, []);
-    return react_1.default.createElement(ListItem_1.default, Object.assign({}, props));
+exports.getMuiListItemSecondaryActionThemeOverrides = getMuiListItemSecondaryActionThemeOverrides;
+const ListItemSecondaryAction = (props) => {
+    return (react_1.default.createElement(ListItemSecondaryAction_1.default, Object.assign({}, props)));
 };
-ListItem.defaultProps = {};
-__exportStar(require("@mui/material/ListItem"), exports);
-exports.default = ListItem;
+ListItemSecondaryAction.defaultProps = {};
+__exportStar(require("@mui/material/ListItemAvatar"), exports);
+exports.default = ListItemSecondaryAction;

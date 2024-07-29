@@ -58,7 +58,7 @@ const IconButton_1 = __importStar(require("../IconButton/IconButton"));
 const Button_1 = __importStar(require("../Button/Button"));
 const Tooltip_1 = __importDefault(require("../Tooltip/Tooltip"));
 const Backdrop_1 = __importDefault(require("../Backdrop/Backdrop"));
-const ListItemText_1 = __importDefault(require("../hidden_components/List/ListItemText"));
+const ListItemText_1 = __importDefault(require("../List/ListItemText"));
 const CircularProgress_1 = __importDefault(require("../ProgressIndicator/CircularProgress/CircularProgress"));
 const colors_1 = require("../colors");
 // Zoom button margin is 12px

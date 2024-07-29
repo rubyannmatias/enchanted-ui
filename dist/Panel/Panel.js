@@ -81,27 +81,35 @@ const StyledDrawer = (0, styles_1.styled)(Drawer_1.default)((theme) => {
     };
 });
 const PanelBody = (0, styles_1.styled)('main')((props) => {
+    let panelWidth = '301px'; // Default width
+    if (props.isPanelCollapsed) {
+        panelWidth = '41px';
+    }
+    else if (props.hideSidebar) {
+        panelWidth = '260px';
+    }
     return {
         background: colors_1.neutralGrey.NG100,
         display: 'flex',
         height: '100%',
-        width: (props.hideSidebar && props.hideSidebar === true) ? '260px' : '301px',
+        width: panelWidth,
     };
 });
 const Panel = (_a) => {
-    var { open, anchor, variant, tabList, hideSidebar, selectedTabValue, panelVariant, handleTabChange } = _a, rest = __rest(_a, ["open", "anchor", "variant", "tabList", "hideSidebar", "selectedTabValue", "panelVariant", "handleTabChange"]);
+    var { open, anchor, variant, tabList, hideSidebar, selectedTabValue, panelVariant, handleTabChange, togglePanel, isPanelCollapsed, translation } = _a, rest = __rest(_a, ["open", "anchor", "variant", "tabList", "hideSidebar", "selectedTabValue", "panelVariant", "handleTabChange", "togglePanel", "isPanelCollapsed", "translation"]);
     const [selectedTabValueDefault, setSelelectedTabValueDefault] = React.useState(0);
     const handleTabChangeDefault = (event, newValue) => {
         setSelelectedTabValueDefault(newValue);
     };
     return (React.createElement(StyledDrawer, { anchor: anchor || 'right', variant: variant || 'persistent', open: open },
-        React.createElement(PanelBody, { hideSidebar: hideSidebar },
+        React.createElement(PanelBody, { hideSidebar: hideSidebar, isPanelCollapsed: isPanelCollapsed },
             React.createElement(React.Fragment, null, tabList && (React.createElement(React.Fragment, null,
-                hideSidebar !== true && (React.createElement(PanelTabs_1.default, { tabs: tabList, handleTabChange: handleTabChange || handleTabChangeDefault, selectedTabValue: selectedTabValue || selectedTabValueDefault })),
-                React.createElement(PanelTabContent_1.default, { open: open, tabs: tabList, selectedTabValue: selectedTabValue || selectedTabValueDefault, variant: panelVariant || PanelVariants.WITH_PADDING, toggleClose: rest.toggleClose || undefined })))))));
+                hideSidebar !== true && (React.createElement(PanelTabs_1.default, { tabs: tabList, handleTabChange: handleTabChange || handleTabChangeDefault, selectedTabValue: selectedTabValue || selectedTabValueDefault, isPanelCollapsed: isPanelCollapsed, togglePanel: togglePanel, translation: translation })),
+                !isPanelCollapsed && (React.createElement(PanelTabContent_1.default, { open: open, tabs: tabList, selectedTabValue: selectedTabValue || selectedTabValueDefault, variant: panelVariant || PanelVariants.WITH_PADDING, toggleClose: rest.toggleClose || undefined, translation: translation }))))))));
 };
 Panel.defaultProps = {
     open: false,
     panelVariant: PanelVariants.WITH_PADDING,
+    isPanelCollapsed: false,
 };
 exports.default = Panel;

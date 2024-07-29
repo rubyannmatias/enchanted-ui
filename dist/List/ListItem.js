@@ -42,25 +42,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMuiListItemButtonThemeOverrides = void 0;
+exports.getMuiListItemThemeOverrides = void 0;
 const react_1 = __importDefault(require("react"));
-const ListItemButton_1 = __importDefault(require("@mui/material/ListItemButton"));
-const getMuiListItemButtonThemeOverrides = () => {
+const ListItem_1 = __importDefault(require("@mui/material/ListItem"));
+const getMuiListItemThemeOverrides = () => {
     return {
-        MuiListItemButton: {
+        MuiListItem: {
             styleOverrides: {
-                root: () => {
-                    return ({});
+                root: ({ ownerState, theme }) => {
+                    const borderStyle = ownerState.hasBorder ? {
+                        borderBottom: `1px solid ${theme.palette.border.secondary}`,
+                        paddingBottom: '4px',
+                        marginBottom: '4px',
+                    } : {};
+                    return Object.assign({}, borderStyle);
                 },
             },
         },
     };
 };
-exports.getMuiListItemButtonThemeOverrides = getMuiListItemButtonThemeOverrides;
-const ListItemButton = (_a) => {
+exports.getMuiListItemThemeOverrides = getMuiListItemThemeOverrides;
+const ListItem = (_a) => {
     var props = __rest(_a, []);
-    return react_1.default.createElement(ListItemButton_1.default, Object.assign({}, props));
+    return (react_1.default.createElement(ListItem_1.default, Object.assign({}, props)));
 };
-ListItemButton.defaultProps = {};
-__exportStar(require("@mui/material/ListItemButton"), exports);
-exports.default = ListItemButton;
+ListItem.defaultProps = {
+    hasBorder: false,
+};
+__exportStar(require("@mui/material/ListItem"), exports);
+exports.default = ListItem;
