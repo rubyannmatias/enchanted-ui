@@ -5,3 +5,4 @@ coverage
 *.tgz
 storybook-static
 __image_snapshots__
+
