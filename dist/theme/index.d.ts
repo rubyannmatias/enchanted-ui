@@ -43,6 +43,7 @@ declare module '@mui/material/styles' {
     interface TypeAction {
         activeOpacity?: string;
         selectedOpacityModified?: string;
+        selectedOpacityHover?: string;
         hoverInverse?: string;
         hoverOpacityModified?: string;
         inverse?: string;
