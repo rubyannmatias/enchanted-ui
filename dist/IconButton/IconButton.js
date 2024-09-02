@@ -196,14 +196,14 @@ const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
                             marginRight: '2px',
                         }));
                     } })))),
-        react_1.default.createElement(Typography_1.default, { variant: "caption", textAlign: "center", sx: (theme) => {
+        props.label && (react_1.default.createElement(Typography_1.default, { variant: "caption", textAlign: "center", sx: (theme) => {
                 return {
                     color: theme.palette.action.active,
                     paddingLeft: '4px',
                     paddingRight: '4px',
                     marginTop: '2px',
                 };
-            } }, props.label)));
+            } }, props.label))));
 });
 IconButton.defaultProps = {
     size: IconButtonSizes.MEDIUM,
