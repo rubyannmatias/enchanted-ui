@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMuiIconButtonThemeOverrides = exports.IconButtonSizes = exports.IconButtonVariants = void 0;
+exports.getMuiIconButtonThemeOverrides = exports.IconButtonTestIds = exports.IconButtonSizes = exports.IconButtonVariants = void 0;
 /* ======================================================================== *
  * Copyright 2024 HCL America Inc.                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
@@ -44,7 +44,11 @@ exports.getMuiIconButtonThemeOverrides = exports.IconButtonSizes = exports.IconB
  * limitations under the License.                                           *
  * ======================================================================== */
 const react_1 = __importDefault(require("react"));
+const material_1 = require("@mui/material");
+const styles_1 = require("@mui/material/styles");
 const IconButton_1 = __importDefault(require("@mui/material/IconButton"));
+const chevron__down_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/chevron--down"));
+const Typography_1 = __importDefault(require("../Typography"));
 var IconButtonVariants;
 (function (IconButtonVariants) {
     IconButtonVariants["WITHOUT_PADDING"] = "without padding";
@@ -55,6 +59,87 @@ var IconButtonSizes;
     IconButtonSizes["SMALL"] = "small";
     IconButtonSizes["MEDIUM"] = "medium";
 })(IconButtonSizes = exports.IconButtonSizes || (exports.IconButtonSizes = {}));
+var IconButtonTestIds;
+(function (IconButtonTestIds) {
+    IconButtonTestIds["ICONBUTTON_END_ICON"] = "iconButtonEndIcon";
+})(IconButtonTestIds = exports.IconButtonTestIds || (exports.IconButtonTestIds = {}));
+const StyledMainContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
+    return {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        display: 'inline-flex',
+        alignItems: 'center',
+        '&.selected': {
+            color: theme.theme.palette.primary.main,
+            '.MuiSvgIcon-root, .MuiTypography-root': {
+                color: theme.theme.palette.primary.main,
+            },
+        },
+        '&.disabled': {
+            color: theme.theme.palette.action.disabled,
+            '.MuiSvgIcon-root, .MuiTypography-root': {
+                color: theme.theme.palette.action.disabled,
+            },
+            pointerEvents: 'none',
+        },
+    };
+});
+const StyledSubContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
+    return {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        display: 'inline-flex',
+        alignItems: 'center',
+        width: 'fit-content',
+        '&:hover': {
+            borderRadius: '2px',
+            backgroundColor: theme.theme.palette.action.hover,
+        },
+        '&.force-to-focusHover': {
+            borderRadius: '2px',
+            backgroundColor: theme.theme.palette.action.hover,
+        },
+        '&.selected': {
+            outline: `1px solid ${theme.theme.palette.action.focus}`,
+            borderRadius: '1px',
+            backgroundColor: theme.theme.palette.action.selectedOpacityModified,
+            '&:hover': {
+                backgroundColor: theme.theme.palette.action.selectedOpacityHover,
+                color: theme.theme.palette.primary.dark,
+                outline: `1px solid ${theme.theme.palette.primary.dark}`,
+                '.MuiSvgIcon-root, + .MuiTypography-root': {
+                    color: theme.theme.palette.primary.dark,
+                },
+            },
+            '&.force-to-focusHover': {
+                backgroundColor: theme.theme.palette.action.selectedOpacityHover,
+                color: theme.theme.palette.primary.dark,
+                outline: `1px solid ${theme.theme.palette.primary.dark}`,
+                '.MuiSvgIcon-root, + .MuiTypography-root': {
+                    color: theme.theme.palette.primary.dark,
+                },
+            },
+            '&.disabled': {
+                backgroundColor: theme.theme.palette.action.disabledOpacityModified,
+                outline: `1px solid ${theme.theme.palette.border.secondary}`,
+                borderRadius: '1px',
+            },
+        },
+    };
+});
+const StyledIconButtonContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
+    return {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        display: 'inline-flex',
+        alignItems: 'center',
+        '&:focus, &.force-to-focus, &.force-to-focusHover': {
+            outline: `1px solid ${theme.theme.palette.action.focus}`,
+            borderRadius: '3px',
+            outlineOffset: '-2px',
+        },
+    };
+});
 const getMuiIconButtonThemeOverrides = () => {
     return {
         MuiIconButton: {
@@ -65,27 +150,16 @@ const getMuiIconButtonThemeOverrides = () => {
                         backgroundColor: 'transparent',
                         borderRadius: '2px',
                         padding: 0,
-                        '&:focus': {
-                            '.MuiSvgIcon-root': Object.assign(Object.assign({ border: `1px solid ${theme.palette.action.focus}`, borderRadius: '3px' }, ownerState.variant === IconButtonVariants.WITHOUT_PADDING && Object.assign(Object.assign({ margin: '2px', padding: '1px' }, ownerState.size === IconButtonSizes.SMALL && {
-                                height: '20px',
-                                width: '20px',
-                            }), ownerState.size === IconButtonSizes.MEDIUM && {
-                                height: '24px',
-                                width: '24px',
-                            })), ownerState.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ margin: '2px', padding: '3px' }, ownerState.size === IconButtonSizes.SMALL && {
-                                height: '24px',
-                                width: '24px',
-                            }), ownerState.size === IconButtonSizes.MEDIUM && {
-                                height: '28px',
-                                width: '28px',
-                            })),
-                        },
                         '&:hover': {
                             borderRadius: '2px',
-                            backgroundColor: theme.palette.action.hover,
+                            backgroundColor: 'transparent',
                         },
-                        '.MuiSvgIcon-root': Object.assign(Object.assign(Object.assign({ margin: '4px', padding: 0, outline: 'none', boxSizing: 'border-box' }, ownerState.variant === IconButtonVariants.WITH_PADDING && {
-                            margin: '6px',
+                        '&.force-to-focusHover': {
+                            borderRadius: '2px',
+                            backgroundColor: 'transparent',
+                        },
+                        '.MuiSvgIcon-root': Object.assign(Object.assign(Object.assign({ margin: '0', padding: 0, outline: 'none', boxSizing: 'border-box' }, ownerState.variant === IconButtonVariants.WITH_PADDING && {
+                            margin: '2px',
                         }), ownerState.size === IconButtonSizes.SMALL && {
                             height: '16px',
                             width: '16px',
@@ -102,19 +176,49 @@ const getMuiIconButtonThemeOverrides = () => {
 exports.getMuiIconButtonThemeOverrides = getMuiIconButtonThemeOverrides;
 const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
     var props = __rest(_a, []);
-    return react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled }));
+    const iconBoxRef = react_1.default.useRef(null);
+    const handleOnFocus = () => {
+        var _a;
+        (_a = iconBoxRef.current) === null || _a === void 0 ? void 0 : _a.focus();
+    };
+    return (react_1.default.createElement(StyledMainContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
+        react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}`, onClick: handleOnFocus, onMouseDown: handleOnFocus },
+            react_1.default.createElement(StyledIconButtonContainer, { ref: iconBoxRef, tabIndex: 0, className: props.className },
+                react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled })),
+                props.showendicon && (react_1.default.createElement(chevron__down_1.default, { "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
+                        return Object.assign(Object.assign({ color: theme.palette.action.active, width: '12px', height: '12px' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
+                            marginRight: '3px',
+                        }), props.size === IconButtonSizes.MEDIUM && {
+                            marginRight: '4px',
+                        })), props.variant === IconButtonVariants.WITHOUT_PADDING && Object.assign(Object.assign({}, props.size === IconButtonSizes.SMALL && {
+                            marginRight: '2px',
+                        }), props.size === IconButtonSizes.MEDIUM && {
+                            marginRight: '2px',
+                        }));
+                    } })))),
+        react_1.default.createElement(Typography_1.default, { variant: "caption", textAlign: "center", sx: (theme) => {
+                return {
+                    color: theme.palette.action.active,
+                    paddingLeft: '4px',
+                    paddingRight: '4px',
+                    marginTop: '2px',
+                };
+            } }, props.label)));
 });
 IconButton.defaultProps = {
-    size: IconButtonSizes.SMALL,
-    variant: IconButtonVariants.WITHOUT_PADDING,
+    size: IconButtonSizes.MEDIUM,
+    variant: IconButtonVariants.WITH_PADDING,
     color: 'default',
+    selected: false,
+    showendicon: false,
+    label: undefined,
     disabled: false,
-    disableFocusRipple: false,
+    disableFocusRipple: true,
     edge: false,
-    centerRipple: false,
-    disableRipple: false,
-    disableTouchRipple: false,
-    focusRipple: false,
+    centerRipple: true,
+    disableRipple: true,
+    disableTouchRipple: true,
+    focusRipple: true,
     tabIndex: 0,
 };
 __exportStar(require("@mui/material/IconButton"), exports);

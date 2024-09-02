@@ -68,6 +68,7 @@ const Button_1 = __importDefault(require("../Button"));
 const IconButton_1 = __importStar(require("../IconButton"));
 const Typography_1 = __importDefault(require("../Typography"));
 const CircularProgress_1 = __importStar(require("../ProgressIndicator/CircularProgress"));
+const Tooltip_1 = __importDefault(require("../Tooltip"));
 var SnackbarVariants;
 (function (SnackbarVariants) {
     SnackbarVariants["WARNING"] = "warning";
@@ -233,11 +234,13 @@ const Snackbar = (_a) => {
             getStatusIcon(rest.variant),
             react_1.default.createElement(Typography_1.default, Object.assign({ variant: "body2", "data-testid": SnackbarTestIds.SNACKBAR_MESSAGE }, buttonText && { 'data-buttontext': buttonText }, showPlaceholderIcon && { 'data-hasplaceholdericon': 'true' }), rest.message),
             buttonText
-                && (react_1.default.createElement(Button_1.default, Object.assign({ "data-testid": SnackbarTestIds.SNACKBAR_BUTTON, onClick: () => { buttonAction(); }, disabled: disabledSnackbar, "aria-disabled": disabledSnackbar }, showPlaceholderIcon && { 'data-hasplaceholdericon': 'true' }), buttonText)),
+                && (react_1.default.createElement(Tooltip_1.default, { title: props.buttonTextToolTip },
+                    react_1.default.createElement(Button_1.default, Object.assign({ "data-testid": SnackbarTestIds.SNACKBAR_BUTTON, onClick: () => { buttonAction(); }, disabled: disabledSnackbar, "aria-disabled": disabledSnackbar }, showPlaceholderIcon && { 'data-hasplaceholdericon': 'true' }), buttonText))),
             (showPlaceholderIcon && react_1.default.isValidElement(placeholderIcon))
                 && (react_1.default.createElement(IconButton_1.default, { "data-testid": SnackbarTestIds.SNACKBAR_PLACEHOLDER_ICON, onClick: () => { placeholderIconAction(); }, disabled: disabledSnackbar, "aria-disabled": disabledSnackbar, variant: IconButton_1.IconButtonVariants.WITH_PADDING }, placeholderIcon)),
-            react_1.default.createElement(IconButton_1.default, { onClick: (e) => { rest.onClose(e, 'clickaway'); }, disabled: disabledSnackbar, "aria-disabled": disabledSnackbar, variant: IconButton_1.IconButtonVariants.WITH_PADDING },
-                react_1.default.createElement(close_1.default, { "data-testid": SnackbarTestIds.SNACKBAR_CLOSE })))));
+            react_1.default.createElement(Tooltip_1.default, { title: props.closeIconToolTip },
+                react_1.default.createElement(IconButton_1.default, { onClick: (e) => { rest.onClose(e, 'clickaway'); }, disabled: disabledSnackbar, "aria-disabled": disabledSnackbar, variant: IconButton_1.IconButtonVariants.WITH_PADDING },
+                    react_1.default.createElement(close_1.default, { "data-testid": SnackbarTestIds.SNACKBAR_CLOSE }))))));
 };
 Snackbar.defaultProps = {
     variant: SnackbarVariants.INFO,
@@ -251,6 +254,7 @@ Snackbar.defaultProps = {
     onClose: () => { },
     /* eslint-enable no-empty-function */
     showPlaceholderIcon: false,
+    closeIconToolTip: 'Close',
 };
 __exportStar(require("@mui/material/Snackbar"), exports);
 exports.default = Snackbar;
