@@ -127,19 +127,6 @@ const StyledSubContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
         },
     };
 });
-const StyledIconButtonContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
-    return {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        display: 'inline-flex',
-        alignItems: 'center',
-        '&:focus, &.force-to-focus, &.force-to-focusHover': {
-            outline: `1px solid ${theme.theme.palette.action.focus}`,
-            borderRadius: '3px',
-            outlineOffset: '-2px',
-        },
-    };
-});
 const getMuiIconButtonThemeOverrides = () => {
     return {
         MuiIconButton: {
@@ -150,15 +137,20 @@ const getMuiIconButtonThemeOverrides = () => {
                         backgroundColor: 'transparent',
                         borderRadius: '2px',
                         padding: 0,
+                        '&.Mui-focusVisible, &:focus, &.force-to-focus, &.force-to-focusHover': {
+                            outline: `1px solid ${theme.palette.action.focus}`,
+                            borderRadius: '3px',
+                            outlineOffset: '-2px',
+                        },
                         '&:hover': {
                             borderRadius: '2px',
-                            backgroundColor: 'transparent',
+                            backgroundColor: theme.palette.action.hover,
                         },
                         '&.force-to-focusHover': {
                             borderRadius: '2px',
-                            backgroundColor: 'transparent',
+                            backgroundColor: theme.palette.action.hover,
                         },
-                        '.MuiSvgIcon-root': Object.assign(Object.assign(Object.assign({ margin: '0', padding: 0, outline: 'none', boxSizing: 'border-box' }, ownerState.variant === IconButtonVariants.WITH_PADDING && {
+                        '.MuiSvgIcon-root:not(.endIcon)': Object.assign(Object.assign(Object.assign({ margin: '0', padding: 0, outline: 'none', boxSizing: 'border-box' }, ownerState.variant === IconButtonVariants.WITH_PADDING && {
                             margin: '2px',
                         }), ownerState.size === IconButtonSizes.SMALL && {
                             height: '16px',
@@ -176,17 +168,12 @@ const getMuiIconButtonThemeOverrides = () => {
 exports.getMuiIconButtonThemeOverrides = getMuiIconButtonThemeOverrides;
 const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
     var props = __rest(_a, []);
-    const iconBoxRef = react_1.default.useRef(null);
-    const handleOnFocus = () => {
-        var _a;
-        (_a = iconBoxRef.current) === null || _a === void 0 ? void 0 : _a.focus();
-    };
     return (react_1.default.createElement(StyledMainContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
-        react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}`, onClick: handleOnFocus, onMouseDown: handleOnFocus },
-            react_1.default.createElement(StyledIconButtonContainer, { ref: iconBoxRef, tabIndex: 0, className: props.className },
-                react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled })),
-                props.showendicon && (react_1.default.createElement(chevron__down_1.default, { "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
-                        return Object.assign(Object.assign({ color: theme.palette.action.active, width: '12px', height: '12px' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
+        react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
+            react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled, className: `${props.selected ? 'selected' : ''} ${props.className}` }),
+                props.children,
+                props.showendicon && (react_1.default.createElement(chevron__down_1.default, { className: "endIcon", "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
+                        return Object.assign(Object.assign({ color: theme.palette.action.active, width: '12px', height: '12px', margin: '0', padding: '0' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
                             marginRight: '3px',
                         }), props.size === IconButtonSizes.MEDIUM && {
                             marginRight: '4px',
