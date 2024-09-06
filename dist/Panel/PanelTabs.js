@@ -115,16 +115,17 @@ const getArrowIcon = (isPanelCollapsed) => {
     return React.createElement(double_right_1.default, null);
 };
 const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, isPanelCollapsed, togglePanel, translation, }) => {
-    const handleTabClick = (event, index) => {
-        if (selectedTabValue === index) {
-            handleTabChange(event, index);
-        }
-    };
     return (React.createElement(PanelTabContainerStyled, null,
-        React.createElement(PanelTabsStyled, { value: selectedTabValue, onChange: handleTabChange, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
+        React.createElement(PanelTabsStyled, { value: selectedTabValue, onChange: (event, newValue) => {
+                handleTabChange(event, newValue);
+                event.stopPropagation();
+            }, onClick: (event) => {
+                handleTabChange(event, selectedTabValue);
+                event.stopPropagation();
+            }, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
             const key = index;
             const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label }, tab.tabIcon.icon));
-            return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true, onClick: (event) => { handleTabClick(event, index); } }));
+            return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true }));
         })),
         togglePanel
             ? (React.createElement(ToggleButtonContainerStyled, null,
