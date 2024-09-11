@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StyledSpan = exports.MuiInputActionLink = exports.MuiGrid = exports.StyledInputLabel = exports.MuiInputHelpIcon = exports.labelFocus = void 0;
+exports.MuiInputActionLink = exports.MuiGrid = exports.StyledInputLabel = exports.MuiInputHelpIcon = exports.labelFocus = void 0;
 /* ======================================================================== *
  * Copyright 2024 HCL America Inc.                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
@@ -94,7 +94,7 @@ exports.MuiGrid = (0, material_1.styled)(Grid_1.default)((theme) => {
     };
 });
 exports.MuiInputActionLink = (0, material_1.styled)(Link_1.default)((theme) => {
-    return Object.assign(Object.assign({}, theme.theme.typography.caption), { textAlign: 'right', display: 'block', padding: 0, border: 'none', lineHeight: '11px', '&[disabled]': {
+    return Object.assign(Object.assign({}, theme.theme.typography.caption), { textAlign: 'right', display: 'block', marginTop: '6px', marginBottom: '4px', padding: 0, paddingLeft: '4px', border: 'none', '&[disabled]': {
             border: 'none',
         }, ':focus': {
             border: 0,
@@ -102,21 +102,9 @@ exports.MuiInputActionLink = (0, material_1.styled)(Link_1.default)((theme) => {
         }, ':hover': {
             cursor: 'pointer',
         }, float: 'right', ':not(:first-of-type)': {
-            borderLeft: `1px solid ${theme.theme.palette.border.secondary}`,
+            borderRight: `1px solid ${theme.theme.palette.border.secondary}`,
             padding: '0 4px', // 4px padding between action link and border divider for multiple action links
         } });
-});
-exports.StyledSpan = (0, material_1.styled)('span')((theme) => {
-    return {
-        display: 'inline-block',
-        marginTop: '6px',
-        marginBottom: '4px',
-        paddingRight: '4px',
-        ':not(:first-of-type)': {
-            borderLeft: `1px solid ${theme.theme.palette.border.secondary}`,
-            padding: '0 4px', // 4px padding between action link and border divider for multiple action links
-        },
-    };
 });
 const renderInputLabelAndAction = (props) => {
     if (props.actionProps) {
@@ -147,12 +135,10 @@ const renderInputLabelAndAction = (props) => {
                         },
                     };
                 } }, limitedActionProps && limitedActionProps.map((actionProp, index) => {
-                return (react_1.default.createElement(Tooltip_1.default, { title: actionProp.tooltip, placement: "bottom" },
-                    react_1.default.createElement(exports.StyledSpan, null,
-                        react_1.default.createElement(exports.MuiInputActionLink, { disabled: actionProp.disabled || props.disabled, href: actionProp.href, onClick: actionProp.handleClick, underline: "none", sx: { display: 'inline' }, 
-                            // eslint-why index is not the sole key definition, it is prefixed by other identifiers
-                            // eslint-disable-next-line react/no-array-index-key
-                            key: `${actionProp.label}-${index}` }, actionProp.label))));
+                return (react_1.default.createElement(exports.MuiInputActionLink, { disabled: props.disabled, href: actionProp.href, onClick: actionProp.handleClick, underline: "none", sx: { display: 'inline' }, 
+                    // eslint-why index is not the sole key definition, it is prefixed by other identifiers
+                    // eslint-disable-next-line react/no-array-index-key
+                    key: `${actionProp.label}-${index}` }, actionProp.label));
             }))));
     }
     return (react_1.default.createElement(exports.MuiGrid, { container: true },

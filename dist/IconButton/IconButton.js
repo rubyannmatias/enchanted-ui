@@ -44,7 +44,6 @@ exports.getMuiIconButtonThemeOverrides = exports.IconButtonTestIds = exports.Ico
  * limitations under the License.                                           *
  * ======================================================================== */
 const react_1 = __importDefault(require("react"));
-const material_1 = require("@mui/material");
 const styles_1 = require("@mui/material/styles");
 const IconButton_1 = __importDefault(require("@mui/material/IconButton"));
 const chevron__down_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/chevron--down"));
@@ -63,7 +62,7 @@ var IconButtonTestIds;
 (function (IconButtonTestIds) {
     IconButtonTestIds["ICONBUTTON_END_ICON"] = "iconButtonEndIcon";
 })(IconButtonTestIds = exports.IconButtonTestIds || (exports.IconButtonTestIds = {}));
-const StyledMainContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
+const StyledMainContainer = (0, styles_1.styled)('div')((theme) => {
     return {
         flexDirection: 'column',
         justifyContent: 'center',
@@ -84,7 +83,7 @@ const StyledMainContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
         },
     };
 });
-const StyledSubContainer = (0, styles_1.styled)(material_1.Box)((theme) => {
+const StyledSubContainer = (0, styles_1.styled)('div')((theme) => {
     return {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -168,7 +167,7 @@ const getMuiIconButtonThemeOverrides = () => {
 exports.getMuiIconButtonThemeOverrides = getMuiIconButtonThemeOverrides;
 const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
     var props = __rest(_a, []);
-    return (react_1.default.createElement(StyledMainContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
+    return (react_1.default.createElement(StyledMainContainer, { className: `IconButtonMainContainer ${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
         react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
             react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled, className: `${props.selected ? 'selected' : ''} ${props.className}` }),
                 props.children,

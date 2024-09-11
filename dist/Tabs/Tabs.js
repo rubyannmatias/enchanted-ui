@@ -127,7 +127,7 @@ const Tabs = (_a) => {
         }
     }, [props.orientation]);
     (0, react_1.useEffect)(() => {
-        if (props.value) {
+        if (props.value !== undefined) {
             setValue(props.value);
         }
     }, [props.value]);
@@ -135,7 +135,9 @@ const Tabs = (_a) => {
         if (props.onChange) {
             props.onChange(event, newValue);
         }
-        setValue(newValue);
+        else {
+            setValue(newValue);
+        }
         updateIndicatorStyle(event.currentTarget);
     };
     return (react_1.default.createElement(StyledTabs, Object.assign({}, props, { value: value, onChange: handleChange, sx: {
@@ -152,7 +154,6 @@ const defaultProps = {
     variant: 'standard',
     tabIndex: 0,
     disabled: false,
-    onChange: undefined,
 };
 Tabs.defaultProps = defaultProps;
 __exportStar(require("@mui/material/Tabs"), exports);

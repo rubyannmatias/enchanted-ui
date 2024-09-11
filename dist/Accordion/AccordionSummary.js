@@ -105,10 +105,10 @@ const StyledAccordionSummary = (0, styles_1.styled)(AccordionSummary_1.default)(
             opacity: '1',
         },
         '& .hover-actions': {
-            '.MuiButtonBase-root': {
+            '.IconButtonMainContainer': {
                 marginLeft: '8px',
             },
-            '.MuiButtonBase-root:first-of-type': {
+            '.IconButtonMainContainer:first-of-type': {
                 marginLeft: '0',
             },
         },
