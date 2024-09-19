@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { AccordionSummaryProps as MuiAccordionSummaryProps } from '@mui/material/AccordionSummary';
-interface AccordionSummaryProps extends MuiAccordionSummaryProps {
+export interface AccordionSummaryProps extends MuiAccordionSummaryProps {
     hoveractions?: ReactNode;
 }
 declare const AccordionSummary: {
