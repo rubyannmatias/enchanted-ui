@@ -59,15 +59,15 @@ const react_1 = __importDefault(require("react"));
 const styles_1 = require("@mui/material/styles");
 const Accordion_1 = __importStar(require("../Accordion"));
 exports.PreviewAccordionTypes = Object.assign({}, Accordion_1.AccordionTypes);
-const StyledAccordion = (0, styles_1.styled)(Accordion_1.default)(() => {
+const StyledAccordion = (0, styles_1.styled)(Accordion_1.default)((props) => {
     return {
         '& .MuiAccordionSummary-content': {
             overflow: 'hidden',
             width: '100%',
         },
-        '& .MuiAccordionDetails-root': {
-            padding: '8px 0px 8px 8px',
-        },
+        '& .MuiAccordionDetails-root': Object.assign(Object.assign(Object.assign(Object.assign({ padding: '8px 0px 8px 8px' }, (props.hascheckbox && { paddingLeft: '34px' })), (props.hasavatar && { paddingLeft: '40px' })), (props.hasicon && { paddingLeft: '36px' })), { '.MuiGrid-root': {
+                borderRadius: 'unset',
+            } }),
         '& .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded': {
             minHeight: '32px',
             backgroundColor: 'transparent',
@@ -102,6 +102,9 @@ const defaultProps = {
     type: Accordion_1.AccordionTypes.OUTLINED,
     children: '',
     variant: 'nopadding',
+    hascheckbox: false,
+    hasicon: false,
+    hasavatar: false,
 };
 PreviewAccordion.defaultProps = defaultProps;
 __exportStar(require("@mui/material/Accordion"), exports);

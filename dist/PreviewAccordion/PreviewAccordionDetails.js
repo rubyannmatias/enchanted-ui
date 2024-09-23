@@ -31,12 +31,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const styles_1 = require("@mui/material/styles");
 const AccordionDetails_1 = __importDefault(require("../Accordion/AccordionDetails"));
-const StyledAccordionDetails = (0, styles_1.styled)((_a) => {
-    var { hascheckbox, hasicon, hasavatar } = _a, other = __rest(_a, ["hascheckbox", "hasicon", "hasavatar"]);
-    return (react_1.default.createElement(AccordionDetails_1.default, Object.assign({}, other)));
-})(({ hascheckbox, hasicon, hasavatar }) => {
+const StyledAccordionDetails = (0, styles_1.styled)(AccordionDetails_1.default)(() => {
     return {
-        '&.MuiAccordionDetails-root': Object.assign(Object.assign(Object.assign({}, (hascheckbox && { paddingLeft: '34px' })), (hasavatar && { paddingLeft: '40px' })), (hasicon && { paddingLeft: '36px' })),
         '&:last-of-type': {
             borderBottomLeftRadius: '4px',
             borderBottomRightRadius: '4px',
@@ -47,9 +43,5 @@ const PreviewAccordionDetails = (_a) => {
     var props = __rest(_a, []);
     return react_1.default.createElement(StyledAccordionDetails, Object.assign({}, props));
 };
-PreviewAccordionDetails.defaultProps = {
-    hascheckbox: false,
-    hasicon: false,
-    hasavatar: false,
-};
+PreviewAccordionDetails.defaultProps = {};
 exports.default = PreviewAccordionDetails;

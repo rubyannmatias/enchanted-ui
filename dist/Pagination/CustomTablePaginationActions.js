@@ -120,7 +120,9 @@ const CustomTablePaginationActions = (props) => {
                     }
                 } }),
             atLeast360px
-                && (react_1.default.createElement(Typography_1.default, { variant: "body2", "data-testid": TablePaginationTestIds.TABLE_PAGINATION_ROWS_TOTAL }, `${translation.rowsPerPageDescription.replace(Pagination_1.TablePaginationLocalizationPlaceholders.CURRENT_PAGE_TO_END_PAGE, `${currentPageShownStart}-${currentPageShownEnd < count ? currentPageShownEnd : count}`).replace(Pagination_1.TablePaginationLocalizationPlaceholders.TOTAL_ROWS_COUNT, `${count}`)}`))),
+                && (react_1.default.createElement(Typography_1.default, { variant: "body2", "data-testid": TablePaginationTestIds.TABLE_PAGINATION_ROWS_TOTAL }, `${translation.rowsPerPageDescription.replace(Pagination_1.TablePaginationLocalizationPlaceholders.CURRENT_PAGE_TO_END_PAGE, theme.direction === theme_1.ThemeDirectionType.RTL
+                    ? `${currentPageShownEnd < count ? currentPageShownEnd : count}-${currentPageShownStart}`
+                    : `${currentPageShownStart}-${currentPageShownEnd < count ? currentPageShownEnd : count}`).replace(Pagination_1.TablePaginationLocalizationPlaceholders.TOTAL_ROWS_COUNT, `${count}`)}`))),
         react_1.default.createElement("div", { "data-testid": TablePaginationTestIds.TABLE_PAGINATION_PAGE_DIV },
             react_1.default.createElement(Tooltip_1.default, { title: theme.direction === theme_1.ThemeDirectionType.RTL ? translation.lastPageAriaLabel : translation.firstPageAriaLabel, placement: "top" },
                 react_1.default.createElement(IconButton_1.default, { onClick: handleFirstPageButtonClick, disabled: page === 0, "aria-label": translation.firstPageAriaLabel, "data-testid": TablePaginationTestIds.TABLE_PAGINATION_PAGE_FIRST }, theme.direction === theme_1.ThemeDirectionType.RTL ? react_1.default.createElement(page__last_1.default, null) : react_1.default.createElement(page__first_1.default, null))),
