@@ -13,29 +13,6 @@
  * See the License for the specific language governing permissions and      *
  * limitations under the License.                                           *
  * ======================================================================== */
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -51,17 +28,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
+const react_1 = __importDefault(require("react"));
 const styles_1 = require("@mui/material/styles");
 const AccordionSummary_1 = __importDefault(require("../Accordion/AccordionSummary"));
-const StyledMiddleSection = (0, styles_1.styled)('div')(({ theme, sectionWidth }) => {
+const StyledMiddleSection = (0, styles_1.styled)('div')(() => {
     return {
         display: 'flex',
         alignItems: 'left',
         flexDirection: 'column',
-        flex: '1 1 auto',
         overflow: 'hidden',
-        width: '100%',
+        maxWidth: '100%',
         justifyContent: 'center',
     };
 });
@@ -113,6 +89,7 @@ const StyledAccordionSummary = (0, styles_1.styled)(AccordionSummary_1.default)(
             height: '20px',
             width: '20px',
             marginRight: '8px',
+            color: theme.palette.action.active,
         },
         '& .MuiCheckbox-root.Mui-focusVisible': {
             margin: '0px 8px 0px 0px',
@@ -135,29 +112,9 @@ const StyledAccordionSummary = (0, styles_1.styled)(AccordionSummary_1.default)(
 });
 const PreviewAccordionSummary = (_a) => {
     var props = __rest(_a, []);
-    const linkSectionRef = (0, react_1.useRef)(null);
-    const [sectionWidth, setSectionWidth] = (0, react_1.useState)(0);
-    const [calculateSectionWidth, setCalculateSectionWidth] = (0, react_1.useState)(false);
-    (0, react_1.useEffect)(() => {
-        const updateWidth = () => {
-            if (linkSectionRef.current) {
-                const width = linkSectionRef.current.offsetWidth;
-                setSectionWidth(width);
-            }
-        };
-        updateWidth();
-        window.addEventListener('resize', updateWidth);
-        return () => {
-            window.removeEventListener('resize', updateWidth);
-        };
-    }, [calculateSectionWidth]);
-    (0, react_1.useEffect)(() => {
-        setSectionWidth('auto');
-        setCalculateSectionWidth(true);
-    }, [props.leftsection, props.rightsection]);
     return (react_1.default.createElement(StyledAccordionSummary, Object.assign({}, props),
         react_1.default.createElement(StyledLeftSection, { className: "accordion-left-section" }, props.leftsection),
-        props.titlelink && (react_1.default.createElement(StyledMiddleSection, { sectionWidth: sectionWidth, ref: linkSectionRef, className: "accordion-link-section" },
+        props.titlelink && (react_1.default.createElement(StyledMiddleSection, { className: "accordion-link-section" },
             props.titlelink && props.titlelink,
             props.subtitle && react_1.default.createElement(StyledSubSection, { className: "sub-section" }, props.subtitle))),
         react_1.default.createElement(StyledRightSection, { className: "accordion-right-section" }, props.rightsection)));

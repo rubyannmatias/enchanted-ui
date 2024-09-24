@@ -28,7 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMuiCircularProgressThemeOverrides = exports.ThemeVariant = exports.CircularProgressTestIds = exports.CircularProgressVariants = void 0;
+exports.getMuiCircularProgressThemeOverrides = exports.CircularProgressTestIds = exports.CircularProgressVariants = void 0;
 /* ======================================================================== *
  * Copyright 2024 HCL America Inc.                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
@@ -64,23 +64,13 @@ var CircularProgressTestIds;
     CircularProgressTestIds["PROGRESS_CIRCLE"] = "progressCircle";
     CircularProgressTestIds["PROGRESS_LABEL"] = "progressLabel";
 })(CircularProgressTestIds = exports.CircularProgressTestIds || (exports.CircularProgressTestIds = {}));
-/**
- * @typedef CircularProgressProps
- * @type {object}
- * @property {boolean} showprogress - Toggles showprogress state to enable/disable progress text inside progress in case of 'determinate' variant
- */
-var ThemeVariant;
-(function (ThemeVariant) {
-    ThemeVariant["Light"] = "light";
-    ThemeVariant["Dark"] = "dark";
-})(ThemeVariant = exports.ThemeVariant || (exports.ThemeVariant = {}));
 const getMuiCircularProgressThemeOverrides = () => {
     return {
         MuiCircularProgress: {
             styleOverrides: {
                 root: ({ ownerState, theme }) => {
-                    return (Object.assign(Object.assign(Object.assign(Object.assign({}, theme.typography.body2), { color: ownerState.themevariant === ThemeVariant.Light ? theme.palette.primary.main : theme.palette.info.inverse, position: 'absolute', left: 0 }), (ownerState.variant === CircularProgressVariants.DETERMINATE && ownerState.id === CircularProgressTestIds.PROGRESS_TRAIL) && {
-                        color: theme.palette.action.hover,
+                    return (Object.assign(Object.assign(Object.assign(Object.assign({}, theme.typography.body2), { color: ownerState.withbackdrop ? theme.palette.info.inverse : theme.palette.primary.main, position: 'absolute', left: 0 }), (ownerState.variant === CircularProgressVariants.DETERMINATE && ownerState.id === CircularProgressTestIds.PROGRESS_TRAIL) && {
+                        color: ownerState.withbackdrop ? theme.palette.action.hoverInverse : theme.palette.action.hover,
                     }), ownerState.variant === CircularProgressVariants.DETERMINATE && {
                         '+ .MuiBox-root': {
                             top: '50%',
@@ -120,7 +110,7 @@ const defaultProps = {
     size: 40,
     variant: CircularProgressVariants.INDETERMINATE,
     showprogress: 0,
-    themevariant: ThemeVariant.Light,
+    withbackdrop: false,
     value: 0,
 };
 CircularProgress.defaultProps = defaultProps;

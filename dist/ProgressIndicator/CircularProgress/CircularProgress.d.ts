@@ -16,13 +16,9 @@ export declare enum CircularProgressTestIds {
  * @type {object}
  * @property {boolean} showprogress - Toggles showprogress state to enable/disable progress text inside progress in case of 'determinate' variant
  */
-export declare enum ThemeVariant {
-    Light = "light",
-    Dark = "dark"
-}
 export type CircularProgressProps = MuiCircularProgressProps & {
     showprogress?: boolean | 0 | 1;
-    themevariant?: ThemeVariant;
+    withbackdrop?: boolean;
 };
 export declare const getMuiCircularProgressThemeOverrides: () => Components<Omit<Theme, 'components'>>;
 declare const CircularProgress: {

@@ -111,7 +111,7 @@ const getMuiListItemButtonThemeOverrides = () => {
                         '& .MuiListItemText-root': {
                             margin: '0 8px 0 0',
                         },
-                        '& .MuiListItemSecondaryAction-root': Object.assign(Object.assign({ opacity: '0', transition: 'opacity 0.3s ease', right: ownerState.size === ListSizes.SMALL ? '8px' : '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }, secondaryActionStyle), { '.MuiButtonBase-root': {
+                        '& .MuiListItemSecondaryAction-root': Object.assign(Object.assign({ opacity: '0', transition: 'opacity 0.3s ease', right: ownerState.size === ListSizes.SMALL ? '8px' : '12px', display: 'flex', justifyContent: 'center', alignItems: 'center' }, secondaryActionStyle), { '.IconButtonMainContainer': {
                                 margin: '0 4px 0 0',
                                 '&:last-child': {
                                     margin: '0',

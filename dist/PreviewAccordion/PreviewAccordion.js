@@ -92,6 +92,9 @@ const StyledAccordion = (0, styles_1.styled)(Accordion_1.default)((props) => {
                 display: 'inline-block',
             },
         },
+        '&.Mui-disabled, & .MuiAccordionSummary-root.Mui-disabled': {
+            opacity: 1,
+        },
     };
 });
 const PreviewAccordion = (_a) => {
