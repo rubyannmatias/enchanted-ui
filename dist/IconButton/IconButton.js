@@ -166,12 +166,12 @@ const getMuiIconButtonThemeOverrides = () => {
 };
 exports.getMuiIconButtonThemeOverrides = getMuiIconButtonThemeOverrides;
 const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
-    var props = __rest(_a, []);
+    var { showendicon } = _a, props = __rest(_a, ["showendicon"]);
     return (react_1.default.createElement(StyledMainContainer, { className: `IconButtonMainContainer ${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
         react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
             react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled, className: `${props.selected ? 'selected' : ''} ${props.className}` }),
                 props.children,
-                props.showendicon && (react_1.default.createElement(chevron__down_1.default, { className: "endIcon", "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
+                (showendicon === 1 || showendicon === true) && (react_1.default.createElement(chevron__down_1.default, { className: "endIcon", "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
                         return Object.assign(Object.assign({ color: theme.palette.action.active, width: '12px', height: '12px', margin: '0', padding: '0' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
                             marginRight: '3px',
                         }), props.size === IconButtonSizes.MEDIUM && {

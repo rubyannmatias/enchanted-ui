@@ -20,7 +20,7 @@ export interface TilePropsType {
     itemClickedAction?(event: React.MouseEvent<HTMLElement>, tileItemId: string): void;
     handlePreviewAction?(event: React.MouseEvent<HTMLElement>, tileItemId: string): void;
     handleCheckboxChange?(event: React.ChangeEvent<HTMLInputElement>, tileItemId: string, isChecked: boolean): void;
-    tileActions: IActions[];
+    tileActions?: IActions[];
     ariaLabel?: string;
     ariaLabelledBy?: string;
     overflowTooltip?: string;

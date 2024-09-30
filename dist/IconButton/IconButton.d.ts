@@ -29,7 +29,7 @@ export type IconButtonProps = MuiIconButtonProps & {
     color?: 'default';
     selected?: boolean;
     label?: string;
-    showendicon?: boolean;
+    showendicon?: boolean | 0 | 1;
 };
 declare const IconButton: React.FC<IconButtonProps>;
 export * from '@mui/material/IconButton';

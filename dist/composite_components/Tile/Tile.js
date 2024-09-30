@@ -79,8 +79,10 @@ const StyledImageListItem = (0, styles_1.styled)(material_1.ImageListItem)(({ th
         cursor: disabled ? 'not-allowed' : 'pointer',
         overflow: 'hidden',
         '&:focus': {
-            border: `1px solid ${theme.palette.action.focus}`,
-            boxShadow: `0 0 0 1px ${theme.palette.action.focus}`,
+            border: `2px solid ${theme.palette.action.focus}`,
+            '.MuiImageListItemBar-root': {
+                paddingBottom: '5px',
+            },
         },
         '&:hover': {
             '.overlay': {
