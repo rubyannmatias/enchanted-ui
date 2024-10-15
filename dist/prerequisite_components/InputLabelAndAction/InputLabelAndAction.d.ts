@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { InputLabelProps as MuiInputLabelProps } from '@mui/material/InputLabel';
 import { Theme } from '@mui/material';
+import { TooltipPlacement } from '../../Tooltip';
 export interface ActionProps {
     href: string;
     label: string;
@@ -11,6 +12,7 @@ export interface ActionProps {
 export interface InputLabelAndActionProps extends MuiInputLabelProps {
     actionProps?: ActionProps[];
     helperIconTooltip?: string;
+    tooltipPlacement?: TooltipPlacement;
     hiddenLabel?: boolean;
     label?: ReactNode;
     isFocus?: boolean;

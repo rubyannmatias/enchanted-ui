@@ -83,6 +83,7 @@ const getInputLabelAndActionProps = (props, isFocus) => {
         id: inputLabelId,
         label: props.label,
         helperIconTooltip: props.helperIconTooltip,
+        tooltipPlacement: props.tooltipPlacement,
         actionProps: props.actionProps,
         hiddenLabel: props.hiddenLabel,
         isFocus,
@@ -100,7 +101,7 @@ const Autocomplete = (_a) => {
     const helperTextId = props.helperText && props.id ? `${props.id}-helper-text` : undefined;
     const muiFormControlProps = getMuiFormControlProps(props);
     const inputLabelAndActionProps = getInputLabelAndActionProps(props, isFocus);
-    return (react_1.default.createElement(AutoCompleteContainer, null,
+    return (react_1.default.createElement(AutoCompleteContainer, { className: "autocomplete-container" },
         react_1.default.createElement(FormControl_1.default, Object.assign({}, muiFormControlProps),
             react_1.default.createElement(InputLabelAndAction_1.default, Object.assign({}, inputLabelAndActionProps)),
             react_1.default.createElement(Autocomplete_1.default, Object.assign({}, rest, { onFocus: () => {

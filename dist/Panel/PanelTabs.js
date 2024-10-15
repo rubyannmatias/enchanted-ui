@@ -124,7 +124,7 @@ const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, isPanelCollapsed, 
                 event.stopPropagation();
             }, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
             const key = index;
-            const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label }, tab.tabIcon.icon));
+            const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label, placement: (tab.tabIcon && tab.tabIcon.tooltipPlacement) ? tab.tabIcon.tooltipPlacement : 'left' }, tab.tabIcon.icon));
             return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true }));
         })),
         togglePanel

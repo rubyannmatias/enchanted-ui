@@ -111,7 +111,7 @@ const getMuiTablePaginationThemeOverrides = () => {
                                     '.MuiFormLabel-root': {
                                         display: 'none', // hides the form action label space from Autocomplete
                                     },
-                                    '> div:first-of-type': {
+                                    '> .autocomplete-container': {
                                         margin: '0 12px 0 4px',
                                     },
                                 },
@@ -120,7 +120,7 @@ const getMuiTablePaginationThemeOverrides = () => {
                                     '.MuiFormLabel-root': {
                                         display: 'none', // hides the form action label space from Autocomplete
                                     },
-                                    '> div:first-of-type': {
+                                    '> .autocomplete-container': {
                                         margin: '0 4px',
                                     },
                                 },

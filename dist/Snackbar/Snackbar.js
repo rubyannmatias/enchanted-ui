@@ -158,41 +158,35 @@ const getMuiSnackbarThemeOverrides = () => {
                                         padding: '1px 5px',
                                     },
                                 } }),
-                            '.MuiIconButton-root': {
-                                marginTop: '-4px',
+                            '.IconButtonMainContainer': {
+                                marginTop: '-2px',
                                 marginRight: '0px',
                                 padding: 0,
-                                '&:hover': {
+                                '& .MuiIconButton-root:hover': {
                                     backgroundColor: theme.palette.action.hoverInverse,
                                 },
-                                '&:focus': {
+                                '& .MuiIconButton-root:focus': {
                                     '.MuiSvgIcon-root': {
                                         border: `1px solid ${theme.palette.primary.inverse}`,
                                     },
                                 },
-                                '&[data-testid=snackbarPlaceholderIcon]': {
+                                '& .MuiIconButton-root[data-testid=snackbarPlaceholderIcon]': {
                                     position: 'relative',
                                 },
-                                '&[data-testid=snackbarPlaceholderIcon] .MuiSvgIcon-root': {
+                                '& .MuiIconButton-root[data-testid=snackbarPlaceholderIcon] .MuiSvgIcon-root': {
                                     color: theme.palette.action.inverse,
                                 },
-                                '&:last-of-type': {
-                                    marginTop: '-4px',
-                                    marginRight: 0,
-                                    padding: 0,
-                                    position: 'relative',
-                                },
-                                '.MuiSvgIcon-root': {
+                                '.MuiIconButton-root .MuiSvgIcon-root': {
                                     '&[data-mui-test=closeIcon]': {
                                         color: theme.palette.action.inverse,
                                     },
                                 },
-                                '&:disabled': {
-                                    '&[data-testid=snackbarPlaceholderIcon] .MuiSvgIcon-root': {
+                                '& .MuiIconButton-root:disabled': {
+                                    '& .MuiIconButton-root[data-testid=snackbarPlaceholderIcon] .MuiSvgIcon-root': {
                                         color: theme.palette.action.disabledInverse,
                                     },
-                                    '.MuiSvgIcon-root': {
-                                        '&[data-mui-test=closeIcon]': {
+                                    '.MuiIconButton-root .MuiSvgIcon-root': {
+                                        '& .MuiIconButton-root[data-mui-test=closeIcon]': {
                                             color: theme.palette.action.disabledInverse,
                                         },
                                     },
