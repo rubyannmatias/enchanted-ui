@@ -55,6 +55,11 @@ const getMuiListItemTextThemeOverrides = () => {
                 root: ({ ownerState, theme }) => {
                     return {
                         margin: '0',
+                        '& .MuiTypography-root': {
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                        },
                     };
                 },
             },

@@ -81,9 +81,13 @@ const StyledDataGrid = (0, material_1.styled)(x_data_grid_1.DataGrid)((props) =>
             zIndex: 1,
         }), ' .MuiDataGrid-cell': {
             borderBottom: `1px ${theme.palette.border.secondary} solid`,
-        }, '& .MuiDataGrid-row:hover': {
-            backgroundColor: theme.palette.action.hover,
+        }, '& .MuiDataGrid-row': {
             '.MuiCheckbox-root': {
+                marginRight: '0',
+            },
+        }, '& .MuiDataGrid-row:hover': Object.assign(Object.assign({ backgroundColor: theme.palette.action.hover }, (props.isRowClickable === true) && {
+            cursor: 'pointer',
+        }), { '.MuiCheckbox-root': {
                 display: 'inline-flex',
                 padding: '4px',
                 height: '24px',
@@ -92,11 +96,9 @@ const StyledDataGrid = (0, material_1.styled)(x_data_grid_1.DataGrid)((props) =>
                     height: '24px',
                     width: '24px',
                 },
-            },
-            '& .MuiDataGrid-cell--withEndActions': {
+            }, '& .MuiDataGrid-cell--withEndActions': {
                 display: 'flex',
-            },
-        }, '& .MuiDataGrid-row.Mui-selected:hover': {
+            } }), '& .MuiDataGrid-row.Mui-selected:hover': {
             backgroundColor: theme.palette.action.hover,
         }, '& .MuiDataGrid-row.Mui-selected': {
             backgroundColor: theme.palette.action.activeOpacity,
@@ -264,6 +266,9 @@ const DataGrid = (_a) => {
         if (event.key === 'Enter' || event.key === ' ') {
             if (rowCheckbox) {
                 rowCheckbox.click();
+            }
+            else if (event.key === 'Enter') {
+                target.click();
             }
         }
         // add navigation control if user press arrow right it will focus on action button on a row

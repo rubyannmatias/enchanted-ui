@@ -39,6 +39,7 @@ export type DataGridProps = MuiDataGridProps & {
     onCheckboxClick?: Function;
     focusedRow?: string;
     stickyHeader?: boolean;
+    isRowClickable?: boolean;
     totalCount: number;
     page: number;
     pageSize: number;
