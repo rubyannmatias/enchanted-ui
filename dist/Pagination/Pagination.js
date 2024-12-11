@@ -112,7 +112,7 @@ const getMuiTablePaginationThemeOverrides = () => {
                                         display: 'none', // hides the form action label space from Autocomplete
                                     },
                                     '> .autocomplete-container': {
-                                        margin: '0 12px 0 4px',
+                                        margin: '0 4px',
                                     },
                                 },
                                 'div[data-testid=tablePaginationActionsPageDiv]': {

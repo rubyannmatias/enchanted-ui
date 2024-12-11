@@ -170,12 +170,12 @@ const renderInputLabelAndAction = (props) => {
                         },
                     };
                 } }, limitedActionProps && limitedActionProps.map((actionProp, index) => {
-                return (react_1.default.createElement(Tooltip_1.default, { title: actionProp.tooltip, placement: "bottom" },
+                return (
+                // eslint-why index is not the sole key definition, it is prefixed by other identifiers
+                // eslint-disable-next-line react/no-array-index-key
+                react_1.default.createElement(Tooltip_1.default, { title: actionProp.tooltip, placement: "bottom", key: `${actionProp.label}-${index}` },
                     react_1.default.createElement(exports.StyledSpan, null,
-                        react_1.default.createElement(exports.MuiInputActionLink, { disabled: actionProp.disabled || props.disabled, href: actionProp.href, onClick: actionProp.handleClick, underline: "none", sx: { display: 'inline' }, 
-                            // eslint-why index is not the sole key definition, it is prefixed by other identifiers
-                            // eslint-disable-next-line react/no-array-index-key
-                            key: `${actionProp.label}-${index}` }, actionProp.label))));
+                        react_1.default.createElement(exports.MuiInputActionLink, { disabled: actionProp.disabled || props.disabled, href: actionProp.href, onClick: actionProp.handleClick, underline: "none", sx: { display: 'inline' } }, actionProp.label))));
             }))));
     }
     return (react_1.default.createElement(exports.MuiGrid, { container: true },
