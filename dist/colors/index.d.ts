@@ -213,6 +213,7 @@ export { default as hclsoftwareblue } from './hclsoftwareblue';
 export declare enum ColorNames {
     PRIMARY_MAIN = "PrimaryMain",
     PRIMARY_DARK = "PrimaryDark",
+    PRIMARY_DARK_INVERSE = "PrimaryDarkInverse",
     PRIMARY_HOVER = "PrimaryHover",
     PRIMARY_INVERSE = "PrimaryInverse",
     PRIMARY_INVERSE_HOVER = "PrimaryInverseHover",

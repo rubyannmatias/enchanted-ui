@@ -109,7 +109,7 @@ const Autocomplete = (_a) => {
                 }, onBlur: () => {
                     setIsFocus(false);
                 }, clearIcon: props.clearIcon ? props.clearIcon : react_1.default.createElement(close_1.default, { color: "action" }), popupIcon: react_1.default.createElement(caret__down_1.default, { color: "action" }), renderInput: (params) => {
-                    const textFieldArgs = Object.assign(Object.assign({}, params), { placeholder: props.placeholder, error: Boolean(props.error), fullWidth: props.fullWidth, sx: props.sx, focused,
+                    const textFieldArgs = Object.assign(Object.assign({}, params), { placeholder: props.placeholder, error: Boolean(props.error), required: props.required, fullWidth: props.fullWidth, sx: props.sx, focused,
                         hiddenLabel,
                         helperIconTooltip,
                         actionProps,

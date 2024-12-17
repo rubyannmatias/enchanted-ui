@@ -74,15 +74,14 @@ exports.StyledInputLabel = (0, material_1.styled)(InputLabel_1.default)((theme) 
     return Object.assign(Object.assign({}, theme.theme.typography.subtitle2), { color: theme.theme.palette.text.secondary, margin: '0px 0px 4px 0px', pointerEvents: 'inherit', position: 'relative', display: 'inline-flex', alignItems: 'center', transform: 'none' });
 });
 const getMuiInputLabelProps = (props) => {
-    const inputLabelId = props.label && props.id ? `${props.id}-label` : undefined;
     const inputLabelProps = {
         color: props.color,
         disabled: props.disabled,
         error: props.error,
         required: props.required,
         sx: props.sx,
-        htmlFor: props.id,
-        id: inputLabelId,
+        htmlFor: props.htmlFor,
+        id: props.id,
     };
     return inputLabelProps;
 };

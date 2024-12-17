@@ -226,7 +226,7 @@ const Snackbar = (_a) => {
     return (react_1.default.createElement(Snackbar_1.default, Object.assign({}, rest),
         react_1.default.createElement(Box_1.default, null,
             getStatusIcon(rest.variant),
-            react_1.default.createElement(Typography_1.default, Object.assign({ role: "alert" // for screen readers
+            react_1.default.createElement(Typography_1.default, Object.assign({ role: "alert" // for screen readers to announce the message
                 , variant: "body2", "data-testid": SnackbarTestIds.SNACKBAR_MESSAGE }, buttonText && { 'data-buttontext': buttonText }, showPlaceholderIcon && { 'data-hasplaceholdericon': 'true' }), rest.message),
             buttonText
                 && (react_1.default.createElement(Tooltip_1.default, { title: props.buttonTextToolTip },

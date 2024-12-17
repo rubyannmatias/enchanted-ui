@@ -69,6 +69,7 @@ var ColorNames;
     // theme colors
     ColorNames["PRIMARY_MAIN"] = "PrimaryMain";
     ColorNames["PRIMARY_DARK"] = "PrimaryDark";
+    ColorNames["PRIMARY_DARK_INVERSE"] = "PrimaryDarkInverse";
     ColorNames["PRIMARY_HOVER"] = "PrimaryHover";
     ColorNames["PRIMARY_INVERSE"] = "PrimaryInverse";
     ColorNames["PRIMARY_INVERSE_HOVER"] = "PrimaryInverseHover";
@@ -329,6 +330,7 @@ exports.Colors = new Map([
     // theme colors
     [ColorNames.PRIMARY_MAIN, blue_1.default.BLUE800],
     [ColorNames.PRIMARY_DARK, '#0029A9'],
+    [ColorNames.PRIMARY_DARK_INVERSE, '#E6FFFF'],
     [ColorNames.PRIMARY_HOVER, '#002B6C'],
     [ColorNames.PRIMARY_INVERSE, blue_1.default.BLUE300],
     [ColorNames.PRIMARY_INVERSE_HOVER, '#A7FFFF'],

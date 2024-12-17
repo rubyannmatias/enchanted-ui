@@ -135,15 +135,6 @@ const ZoomContainer = (0, styles_1.styled)(material_1.Grid)((props) => {
         },
     };
 });
-const StyledIconButton = (0, styles_1.styled)(IconButton_1.default)((props) => {
-    const { theme } = props;
-    return {
-        color: `1px solid ${theme.palette.common.white}`,
-        '&:hover': {
-            backgroundColor: theme.palette.action.hoverInverse,
-        },
-    };
-});
 const PreviousPreviewButton = (0, styles_1.styled)(material_1.Grid)((props) => {
     const { theme } = props;
     return {
@@ -550,12 +541,12 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                             position: isVersionComparison ? 'absolute' : 'fixed',
                         } },
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomOut },
-                            React.createElement(StyledIconButton, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_OUT_BUTTON, variant: IconButton_1.IconButtonVariants.WITHOUT_PADDING, disabled: zoomOutDisable, onClick: handleZoomOut, showendicon: 0 },
+                            React.createElement(IconButton_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_OUT_BUTTON, variant: IconButton_1.IconButtonVariants.WITH_PADDING, inversecolors: true, disabled: zoomOutDisable, onClick: handleZoomOut, showendicon: 0 },
                                 React.createElement(zoom__out_1.default, null))),
                         React.createElement(Tooltip_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_TOOLTIP_TEXT, tooltipsize: "small", placement: "top", title: zoomButtonTooltip },
                             React.createElement(Button_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_PERCENT_BUTTON, variant: "text", size: "small", onClick: zoomPercentageFit }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomIn },
-                            React.createElement(StyledIconButton, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_IN_BUTTON, variant: IconButton_1.IconButtonVariants.WITHOUT_PADDING, disabled: zoomInDisable, onClick: handleZoomIn, showendicon: 0 },
+                            React.createElement(IconButton_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_IN_BUTTON, variant: IconButton_1.IconButtonVariants.WITH_PADDING, inversecolors: true, disabled: zoomInDisable, onClick: handleZoomIn, showendicon: 0 },
                                 React.createElement(zoom__in_1.default, null))))))))));
 };
 Preview.defaultProps = {

@@ -62,28 +62,30 @@ var IconButtonTestIds;
 (function (IconButtonTestIds) {
     IconButtonTestIds["ICONBUTTON_END_ICON"] = "iconButtonEndIcon";
 })(IconButtonTestIds = exports.IconButtonTestIds || (exports.IconButtonTestIds = {}));
-const StyledMainContainer = (0, styles_1.styled)('div')((theme) => {
+const StyledMainContainer = (0, styles_1.styled)('div')((props) => {
+    const { theme, inversecolors } = props;
     return {
         flexDirection: 'column',
         justifyContent: 'center',
         display: 'inline-flex',
         alignItems: 'center',
         '&.selected': {
-            color: theme.theme.palette.primary.main,
+            color: inversecolors ? theme.palette.action.selectedInverse : theme.palette.action.selected,
             '.MuiSvgIcon-root, .MuiTypography-root': {
-                color: theme.theme.palette.primary.main,
+                color: inversecolors ? theme.palette.action.selectedInverse : theme.palette.action.selected,
             },
         },
         '&.disabled': {
-            color: theme.theme.palette.action.disabled,
+            color: inversecolors ? theme.palette.action.disabledInverse : theme.palette.action.disabled,
             '.MuiSvgIcon-root, .MuiTypography-root': {
-                color: theme.theme.palette.action.disabled,
+                color: inversecolors ? theme.palette.action.disabledInverse : theme.palette.action.disabled,
             },
             pointerEvents: 'none',
         },
     };
 });
-const StyledSubContainer = (0, styles_1.styled)('div')((theme) => {
+const StyledSubContainer = (0, styles_1.styled)('div')((props) => {
+    const { theme, inversecolors } = props;
     return {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -92,35 +94,35 @@ const StyledSubContainer = (0, styles_1.styled)('div')((theme) => {
         width: 'fit-content',
         '&:hover': {
             borderRadius: '2px',
-            backgroundColor: theme.theme.palette.action.hover,
+            backgroundColor: inversecolors ? theme.palette.action.hoverInverse : theme.palette.action.hover,
         },
         '&.force-to-focusHover': {
             borderRadius: '2px',
-            backgroundColor: theme.theme.palette.action.hover,
+            backgroundColor: inversecolors ? theme.palette.action.hoverInverse : theme.palette.action.hover,
         },
         '&.selected': {
-            outline: `1px solid ${theme.theme.palette.action.focus}`,
+            outline: `1px solid ${inversecolors ? theme.palette.action.focusInverse : theme.palette.action.focus}`,
             borderRadius: '1px',
-            backgroundColor: theme.theme.palette.action.selectedOpacityModified,
+            backgroundColor: theme.palette.action.selectedOpacityModified,
             '&:hover': {
-                backgroundColor: theme.theme.palette.action.selectedOpacityHover,
-                color: theme.theme.palette.primary.dark,
-                outline: `1px solid ${theme.theme.palette.primary.dark}`,
+                backgroundColor: theme.palette.action.selectedOpacityModified,
+                color: inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark,
+                outline: `1px solid ${inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark}`,
                 '.MuiSvgIcon-root, + .MuiTypography-root': {
-                    color: theme.theme.palette.primary.dark,
+                    color: inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark,
                 },
             },
             '&.force-to-focusHover': {
-                backgroundColor: theme.theme.palette.action.selectedOpacityHover,
-                color: theme.theme.palette.primary.dark,
-                outline: `1px solid ${theme.theme.palette.primary.dark}`,
+                backgroundColor: theme.palette.action.selectedOpacityModified,
+                color: inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark,
+                outline: `1px solid ${inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark}`,
                 '.MuiSvgIcon-root, + .MuiTypography-root': {
-                    color: theme.theme.palette.primary.dark,
+                    color: inversecolors ? theme.palette.primary.darkInverse : theme.palette.primary.dark,
                 },
             },
             '&.disabled': {
-                backgroundColor: theme.theme.palette.action.disabledOpacityModified,
-                outline: `1px solid ${theme.theme.palette.border.secondary}`,
+                backgroundColor: theme.palette.action.disabledOpacityModified,
+                outline: `1px solid ${inversecolors ? theme.palette.border.inverseSecondary : theme.palette.border.secondary}`,
                 borderRadius: '1px',
             },
         },
@@ -132,22 +134,22 @@ const getMuiIconButtonThemeOverrides = () => {
             styleOverrides: {
                 root: ({ ownerState, theme }) => {
                     return ({
-                        color: theme.palette.action.active,
+                        color: ownerState.inversecolors ? theme.palette.action.inverse : theme.palette.action.active,
                         backgroundColor: 'transparent',
                         borderRadius: '2px',
                         padding: 0,
                         '&.Mui-focusVisible, &:focus, &.force-to-focus, &.force-to-focusHover': {
-                            outline: `1px solid ${theme.palette.action.focus}`,
+                            outline: `1px solid ${ownerState.inversecolors ? theme.palette.action.focusInverse : theme.palette.action.focus}`,
                             borderRadius: '3px',
                             outlineOffset: '-2px',
                         },
                         '&:hover': {
                             borderRadius: '2px',
-                            backgroundColor: theme.palette.action.hover,
+                            backgroundColor: ownerState.inversecolors ? theme.palette.action.hoverInverse : theme.palette.action.hover,
                         },
                         '&.force-to-focusHover': {
                             borderRadius: '2px',
-                            backgroundColor: theme.palette.action.hover,
+                            backgroundColor: ownerState.inversecolors ? theme.palette.action.hoverInverse : theme.palette.action.hover,
                         },
                         '.MuiSvgIcon-root:not(.endIcon)': Object.assign(Object.assign(Object.assign({ margin: '0', padding: 0, outline: 'none', boxSizing: 'border-box' }, ownerState.variant === IconButtonVariants.WITH_PADDING && {
                             margin: '2px',
@@ -167,12 +169,13 @@ const getMuiIconButtonThemeOverrides = () => {
 exports.getMuiIconButtonThemeOverrides = getMuiIconButtonThemeOverrides;
 const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
     var { showendicon } = _a, props = __rest(_a, ["showendicon"]);
-    return (react_1.default.createElement(StyledMainContainer, { className: `IconButtonMainContainer ${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
-        react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}` },
+    props.inversecolors = props.inversecolors ? 1 : 0;
+    return (react_1.default.createElement(StyledMainContainer, { className: `IconButtonMainContainer ${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}`, inversecolors: Boolean(props.inversecolors) },
+        react_1.default.createElement(StyledSubContainer, { className: `${props.selected ? 'selected' : ''} ${props.disabled ? 'disabled' : ''} ${props.className}`, inversecolors: Boolean(props.inversecolors) },
             react_1.default.createElement(IconButton_1.default, Object.assign({}, props, { ref: forwardRef, role: "button", "aria-disabled": props.disabled, className: `${props.selected ? 'selected' : ''} ${props.className}` }),
                 props.children,
                 (showendicon === 1 || showendicon === true) && (react_1.default.createElement(chevron__down_1.default, { className: "endIcon", "data-testid": IconButtonTestIds.ICONBUTTON_END_ICON, sx: (theme) => {
-                        return Object.assign(Object.assign({ color: theme.palette.action.active, width: '12px', height: '12px', margin: '0', padding: '0' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
+                        return Object.assign(Object.assign({ color: (props.inversecolors) ? theme.palette.action.inverse : theme.palette.action.active, width: '12px', height: '12px', margin: '0', padding: '0' }, props.variant === IconButtonVariants.WITH_PADDING && Object.assign(Object.assign({ marginLeft: '-2px' }, props.size === IconButtonSizes.SMALL && {
                             marginRight: '3px',
                         }), props.size === IconButtonSizes.MEDIUM && {
                             marginRight: '4px',
@@ -184,7 +187,7 @@ const IconButton = react_1.default.forwardRef((_a, forwardRef) => {
                     } })))),
         props.label && (react_1.default.createElement(Typography_1.default, { variant: "caption", textAlign: "center", sx: (theme) => {
                 return {
-                    color: theme.palette.action.active,
+                    color: (props.inversecolors) ? theme.palette.action.inverse : theme.palette.action.active,
                     paddingLeft: '4px',
                     paddingRight: '4px',
                     marginTop: '2px',
@@ -199,6 +202,7 @@ IconButton.defaultProps = {
     showendicon: false,
     label: undefined,
     disabled: false,
+    inversecolors: false,
     disableFocusRipple: true,
     edge: false,
     centerRipple: true,

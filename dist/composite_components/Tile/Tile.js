@@ -135,11 +135,6 @@ const CustomCheckbox = (0, styles_1.styled)(Checkbox_1.default)(({ theme }) => {
         },
     };
 });
-const CustomIconView = (0, styles_1.styled)(view_1.default)(({ theme }) => {
-    return {
-        color: `${theme.palette.action.inverse}`,
-    };
-});
 const StyledImageListItembar = (0, styles_1.styled)(material_1.ImageListItemBar)(({ theme }) => {
     const { hasThumbnail } = react_1.default.useContext(ImageListContext);
     return {
@@ -245,8 +240,8 @@ const Tile = (props) => {
                         objectFit: 'cover',
                     }, src: imageUrl, alt: imageAltName || '' }),
                 !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
-                        react_1.default.createElement(CustomIconView, null)),
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, inversecolors: true, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
+                        react_1.default.createElement(view_1.default, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, hoverPreviewMenu || 'Preview'))))),
             (imageUrl && avatar) && (isImageLoaded && hideAvatarIfImageIsLoaded) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement("img", { style: {
@@ -256,20 +251,20 @@ const Tile = (props) => {
                         objectFit: 'cover',
                     }, src: imageUrl, alt: imageAltName || '' }),
                 !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
-                        react_1.default.createElement(CustomIconView, null)),
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, inversecolors: true, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
+                        react_1.default.createElement(view_1.default, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, hoverPreviewMenu || 'Preview'))))),
             (imageUrl && avatar) && (!hideAvatarIfImageIsLoaded || (!isImageLoaded)) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement(exports.StyledBox, null, avatar),
                 !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
-                        react_1.default.createElement(CustomIconView, null)),
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, inversecolors: true, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
+                        react_1.default.createElement(view_1.default, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, hoverPreviewMenu || 'Preview'))))),
             (!imageUrl && avatar) && (hasThumbnail) && (react_1.default.createElement(ImageContainer, null,
                 react_1.default.createElement(exports.StyledBox, null, avatar),
                 !disabled && (react_1.default.createElement(Overlay, { className: `overlay ${isOverlayVisible ? 'visible' : ''}` },
-                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
-                        react_1.default.createElement(CustomIconView, null)),
+                    react_1.default.createElement(IconButton_1.default, { "data-testid": TileTestIds.TILE_PREVIEW, inversecolors: true, onClick: (event) => { return handlePreviewAction === null || handlePreviewAction === void 0 ? void 0 : handlePreviewAction(event, itemId); }, onFocus: () => { return setIsOverlayVisible(true); }, onBlur: () => { return setIsOverlayVisible(false); } },
+                        react_1.default.createElement(view_1.default, null)),
                     react_1.default.createElement(PreviewTitle, { variant: "body2" }, hoverPreviewMenu || 'Preview'))))),
             react_1.default.createElement(StyledImageListItembar, { className: "image-list-item-bar", title: (react_1.default.createElement(material_1.Box, { sx: { display: 'flex', alignItems: 'flex-start' } },
                     hasCheckBox && (react_1.default.createElement(CustomCheckbox, { checked: isChecked, disabled: disabled, onChange: handleCheckboxChange })),

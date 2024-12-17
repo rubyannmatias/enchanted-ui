@@ -159,6 +159,7 @@ const PALETTE_LIGHT = {
     primary: {
         main: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07)),
         dark: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.PRIMARY_DARK)),
+        darkInverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.PRIMARY_DARK_INVERSE)),
         inverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE09)),
     },
     error: {
@@ -217,6 +218,7 @@ const PALETTE_LIGHT = {
         hover: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK7P)),
         hoverOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK7P)),
         selected: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07)),
+        selectedInverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE09)),
         selectedOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07_8P)),
         selectedOpacityHover: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07_20P)),
         disabled: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK38P)),
@@ -224,6 +226,7 @@ const PALETTE_LIGHT = {
         disabledOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK8P)),
         disableOpacityHover: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.BLACK15P)),
         focus: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07)),
+        focusInverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE09)),
         focusOpacityModified: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.HCLSOFTWAREBLUE07_12P)),
         inverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.WHITE80P)),
         disabledInverse: (0, exports.ensureToGetColor)(colors_1.Colors.get(colors_1.ColorNames.WHITE38P)),
