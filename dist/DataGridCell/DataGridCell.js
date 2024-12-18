@@ -42,10 +42,15 @@ const DataGridCell = (props) => {
     const colDef = props.colDef;
     const { row } = props; // get row values
     const handleOnCellKeydown = react_1.default.useCallback((event) => {
-        var _a;
+        var _a, _b, _c;
         const target = event.target;
         // if cell has action button and if user press tab we should not hide action button
-        if (event.key === 'Tab' && row[`endActions-${colDef.field}`] && row[`endActions-${colDef.field}`].length > 0 && ((_a = target.parentElement) === null || _a === void 0 ? void 0 : _a.nextElementSibling)) {
+        if ((event.key === 'Tab' || event.key === 'ArrowDown' || event.key === 'ArrowUp')
+            && row[`endActions-${colDef.field}`] && row[`endActions-${colDef.field}`].length > 0) {
+            if (target.getAttribute('role') === 'button' && !((_c = (_b = (_a = target.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.nextSibling)) {
+                setIsActive(false);
+                return;
+            }
             setIsActive(true);
         }
         else {
