@@ -53,6 +53,7 @@ export interface PreviewProps {
         nextAsset: string;
         previousAsset: string;
         download: string;
+        backButton: string;
     };
     isNextButtonDisabled?: boolean;
     isPreviousButtonDisabled?: boolean;

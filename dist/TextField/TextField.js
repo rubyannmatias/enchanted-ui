@@ -227,7 +227,7 @@ const getMuiTextFieldThemeOverrides = () => {
     };
 };
 exports.getMuiTextFieldThemeOverrides = getMuiTextFieldThemeOverrides;
-const TextFieldContainer = (0, styles_1.styled)('div')((theme) => {
+const StyledMuiFormControl = (0, styles_1.styled)(FormControl_1.default)((theme) => {
     return {
         '.MuiAutocomplete--label--focused': {
             color: theme.theme.palette.primary.main,
@@ -330,10 +330,9 @@ const TextField = react_1.default.forwardRef((_a, forwardRef) => {
     }
     const muiInputLabelProps = getInputLabelAndActionProps(props, isFocus);
     const muiFormControlProps = getMuiFormControlProps(props, forwardRef);
-    return (react_1.default.createElement(TextFieldContainer, null,
-        react_1.default.createElement(FormControl_1.default, Object.assign({}, muiFormControlProps),
-            react_1.default.createElement(InputLabelAndAction_1.default, Object.assign({}, muiInputLabelProps)),
-            renderInput(props, setIsFocus))));
+    return (react_1.default.createElement(StyledMuiFormControl, Object.assign({}, muiFormControlProps),
+        react_1.default.createElement(InputLabelAndAction_1.default, Object.assign({}, muiInputLabelProps)),
+        renderInput(props, setIsFocus)));
 });
 TextField.defaultProps = {
     margin: 'none',

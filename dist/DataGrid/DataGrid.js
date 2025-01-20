@@ -285,6 +285,9 @@ const DataGrid = (_a) => {
                     parentCell.firstElementChild.focus();
                 }
             }
+            else if (target.firstElementChild) {
+                target.firstElementChild.focus();
+            }
         }
         if (event.key === 'ArrowLeft') {
             // we need to focus on the row if the cell is the last cell

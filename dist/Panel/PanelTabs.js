@@ -115,6 +115,13 @@ const getArrowIcon = (isPanelCollapsed) => {
     return React.createElement(double_right_1.default, null);
 };
 const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, isPanelCollapsed, togglePanel, translation, }) => {
+    const [activeTab, setActiveTab] = React.useState(null);
+    const handleFocus = (key) => {
+        setActiveTab(key);
+    };
+    const handleBlur = () => {
+        setActiveTab(null);
+    };
     return (React.createElement(PanelTabContainerStyled, null,
         React.createElement(PanelTabsStyled, { value: selectedTabValue, onChange: (event, newValue) => {
                 handleTabChange(event, newValue);
@@ -124,8 +131,12 @@ const PanelTabs = ({ selectedTabValue, handleTabChange, tabs, isPanelCollapsed, 
                 event.stopPropagation();
             }, "data-testid": "panel-tabs", orientation: "vertical", variant: "scrollable", tabIndex: -1 }, tabs.map((tab, index) => {
             const key = index;
-            const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label, placement: (tab.tabIcon && tab.tabIcon.tooltipPlacement) ? tab.tabIcon.tooltipPlacement : 'left' }, tab.tabIcon.icon));
-            return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true }));
+            const iconTooltip = (React.createElement(Tooltip_1.default, { title: tab.tabIcon.label, open: activeTab === key, placement: (tab.tabIcon && tab.tabIcon.tooltipPlacement) ? tab.tabIcon.tooltipPlacement : 'left' }, tab.tabIcon.icon));
+            return (React.createElement(TabStyled, { key: `tab-${key}`, tabIndex: 0, "data-testid": `tab-${key}`, icon: iconTooltip, "aria-label": tab.tabIcon.label, disableFocusRipple: true, onFocus: () => {
+                    return handleFocus(key);
+                }, onBlur: handleBlur, onMouseEnter: () => {
+                    return handleFocus(key);
+                }, onMouseLeave: handleBlur }));
         })),
         togglePanel
             ? (React.createElement(ToggleButtonContainerStyled, null,

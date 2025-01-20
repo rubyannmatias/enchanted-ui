@@ -495,6 +495,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                         hamburgerSpace: false,
                         withBackButton: true,
                         title: customHeaderTitle !== null && customHeaderTitle !== void 0 ? customHeaderTitle : currentAsset.title,
+                        backIconToolTip: tooltipTexts.backButton,
                     }, middleSection: [
                         React.createElement(Typography_1.default, { color: "textSecondary", variant: "subtitle2", marginRight: -1 }, renditionLabel),
                         React.createElement(Select_1.default, { "data-testid": PreviewTestIds.PREVIEW_RENDITION_DROPDOWN, hiddenLabel: true, required: true, value: (_b = currentRendition.type) !== null && _b !== void 0 ? _b : '', onChange: handleOnChangeSelect, disabled: !isCurrentAssetReady || reactComponent !== undefined }, currentAsset.renditions.map((rendition) => {

@@ -359,12 +359,13 @@ const ProgressItems = (props) => {
                                     react_1.default.createElement("span", { "data-testid": "failed-status-label", style: {
                                             maxWidth: showLearnMoreButton ? '165px' : '225px',
                                         } }, !queueItem.message ? translation === null || translation === void 0 ? void 0 : translation.failureLabel : queueItem.message))),
-                                showLearnMoreButton && (react_1.default.createElement(Button_1.default, { style: { marginLeft: '4px', padding: '0px 3px 3px 3px' }, onClick: learnMoreOnFailure, onKeyDown: (event) => {
-                                        if (event.key === 'Enter') {
-                                            learnMoreOnFailure(event);
-                                        }
-                                    }, "data-testid": "learn-more-button" },
-                                    react_1.default.createElement(Typography_1.default, { variant: "caption" }, literals.learnMoreLabel))))) })) : (react_1.default.createElement(ListItemText_1.default, { primary: (react_1.default.createElement(Tooltip_1.default, { title: queueItem.name, tooltipsize: "small" },
+                                showLearnMoreButton && (react_1.default.createElement(Tooltip_1.default, { title: literals.learnMoreLabel, tooltipsize: "small" },
+                                    react_1.default.createElement(Button_1.default, { style: { marginLeft: '4px', padding: '0px 3px 3px 3px' }, onClick: learnMoreOnFailure, onKeyDown: (event) => {
+                                            if (event.key === 'Enter') {
+                                                learnMoreOnFailure(event);
+                                            }
+                                        }, "data-testid": "learn-more-button" },
+                                        react_1.default.createElement(Typography_1.default, { variant: "caption" }, literals.learnMoreLabel)))))) })) : (react_1.default.createElement(ListItemText_1.default, { primary: (react_1.default.createElement(Tooltip_1.default, { title: queueItem.name, tooltipsize: "small" },
                             react_1.default.createElement("span", { style: {
                                     maxWidth: '285px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis',
                                 }, "data-testid": "pending-item-text-primary" }, queueItem.name))), secondary: (react_1.default.createElement(react_1.default.Fragment, null,

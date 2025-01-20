@@ -53,6 +53,7 @@ const styles_1 = require("@mui/material/styles");
 const theme_1 = require("../theme");
 const InputLabelAndAction_1 = __importDefault(require("../prerequisite_components/InputLabelAndAction/InputLabelAndAction"));
 const TextField_1 = __importDefault(require("../TextField/TextField"));
+const Tooltip_1 = __importDefault(require("../Tooltip"));
 const getMuiFormControlProps = (_a) => {
     var props = __rest(_a, []);
     const muiFormControlProps = {
@@ -101,6 +102,17 @@ const Autocomplete = (_a) => {
     const helperTextId = props.helperText && props.id ? `${props.id}-helper-text` : undefined;
     const muiFormControlProps = getMuiFormControlProps(props);
     const inputLabelAndActionProps = getInputLabelAndActionProps(props, isFocus);
+    const textfieldRef = react_1.default.useRef(null);
+    const [isValueOverFlowing, setIsValueOverFlowing] = react_1.default.useState(false);
+    react_1.default.useEffect(() => {
+        const textFieldElement = textfieldRef.current;
+        if (textFieldElement && textFieldElement.scrollWidth > textFieldElement.clientWidth) {
+            setIsValueOverFlowing(true);
+        }
+        else {
+            setIsValueOverFlowing(false);
+        }
+    }, [props.value]);
     return (react_1.default.createElement(AutoCompleteContainer, { className: "autocomplete-container" },
         react_1.default.createElement(FormControl_1.default, Object.assign({}, muiFormControlProps),
             react_1.default.createElement(InputLabelAndAction_1.default, Object.assign({}, inputLabelAndActionProps)),
@@ -109,13 +121,16 @@ const Autocomplete = (_a) => {
                 }, onBlur: () => {
                     setIsFocus(false);
                 }, clearIcon: props.clearIcon ? props.clearIcon : react_1.default.createElement(close_1.default, { color: "action" }), popupIcon: react_1.default.createElement(caret__down_1.default, { color: "action" }), renderInput: (params) => {
+                    var _a;
                     const textFieldArgs = Object.assign(Object.assign({}, params), { placeholder: props.placeholder, error: Boolean(props.error), required: props.required, fullWidth: props.fullWidth, sx: props.sx, focused,
                         hiddenLabel,
                         helperIconTooltip,
                         actionProps,
                         nonEdit, size: props.size, autoFocus: props.autoFocus, renderNonEditInput,
                         endAdornmentAction, value: props.value });
-                    return react_1.default.createElement(TextField_1.default, Object.assign({}, textFieldArgs));
+                    const tooltipTitle = isValueOverFlowing ? ((_a = textfieldRef.current) === null || _a === void 0 ? void 0 : _a.value) || '' : '';
+                    return (react_1.default.createElement(Tooltip_1.default, { title: tooltipTitle, tooltipsize: "small" },
+                        react_1.default.createElement(TextField_1.default, Object.assign({}, textFieldArgs, { inputRef: textfieldRef }))));
                 } })),
             react_1.default.createElement(FormHelperText_1.default, { id: helperTextId, sx: { marginTop: nonEdit ? '0px' : '4px' } }, helperText))));
 };

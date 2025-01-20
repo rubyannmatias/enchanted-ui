@@ -69,7 +69,7 @@ const CustomTablePaginationActions = (props) => {
         react_1.default.createElement("div", { "data-testid": TablePaginationTestIds.TABLE_PAGINATION_ROWS_DIV },
             atLeast480px
                 && react_1.default.createElement(Typography_1.default, { variant: "body2", "data-testid": TablePaginationTestIds.TABLE_PAGINATION_ROWS_LABEL }, translation.rowsPerPageLabel),
-            react_1.default.createElement(Autocomplete_1.default, { noOptionsText: "", options: rowsPerPageOptions, getOptionLabel: (option) => { return (Number(option)).toString(); }, sx: { '& .MuiFormControl-root': { minWidth: '0px' }, '& .MuiAutocomplete-inputRoot': { width: '62px' } }, componentsProps: {
+            react_1.default.createElement(Autocomplete_1.default, { "aria-label": translation.rowsPerPageLabel, tabIndex: 0, noOptionsText: "", options: rowsPerPageOptions, getOptionLabel: (option) => { return (Number(option)).toString(); }, sx: { '& .MuiFormControl-root': { minWidth: '0px' }, '& .MuiAutocomplete-inputRoot': { width: '62px' } }, componentsProps: {
                     popper: {
                         sx: {
                             '.MuiAutocomplete-listbox': Object.assign(Object.assign({}, theme_1.TYPOGRAPHY.body2), { '::-webkit-scrollbar': {
@@ -130,7 +130,7 @@ const CustomTablePaginationActions = (props) => {
                 react_1.default.createElement(IconButton_1.default, { onClick: handleBackButtonClick, disabled: page === 0, "aria-label": translation.prevPageAriaLabel, "data-testid": TablePaginationTestIds.TABLE_PAGINATION_PAGE_PREV }, theme.direction === theme_1.ThemeDirectionType.RTL ? react_1.default.createElement(chevron__right_1.default, null) : react_1.default.createElement(chevron__left_1.default, null))),
             atLeast480px
                 && react_1.default.createElement(Typography_1.default, { variant: "body2", "data-testid": TablePaginationTestIds.TABLE_PAGINATION_PAGE_LABEL }, translation.pageLabel),
-            react_1.default.createElement(Autocomplete_1.default, { noOptionsText: "", options: Array.from(Array(Math.ceil(count / rowsPerPage)).keys()), getOptionLabel: (option) => { return (Number(option) + 1).toString(); }, sx: { '& .MuiFormControl-root': { minWidth: '0px' }, '& .MuiAutocomplete-inputRoot': { width: '40px' } }, componentsProps: {
+            react_1.default.createElement(Autocomplete_1.default, { "aria-label": translation.pageLabel, tabIndex: 0, noOptionsText: "", options: Array.from(Array(Math.ceil(count / rowsPerPage)).keys()), getOptionLabel: (option) => { return (Number(option) + 1).toString(); }, sx: { '& .MuiFormControl-root': { minWidth: '0px' }, '& .MuiAutocomplete-inputRoot': { width: '40px' } }, componentsProps: {
                     popper: {
                         sx: {
                             '.MuiAutocomplete-listbox': Object.assign(Object.assign({}, theme_1.TYPOGRAPHY.body2), { '::-webkit-scrollbar': {
