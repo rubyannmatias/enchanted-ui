@@ -1,6 +1,6 @@
 "use strict";
 /* ======================================================================== *
- * Copyright 2024 HCL America Inc.                                          *
+ * Copyright 2024, 2025 HCL America Inc.                                    *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
  * You may obtain a copy of the License at                                  *
@@ -93,13 +93,16 @@ const getInputLabelAndActionProps = (props, isFocus) => {
     return inputLabelProps;
 };
 const Autocomplete = (_a) => {
+    var _b;
     var props = __rest(_a, []);
     const { helperText, helperIconTooltip, actionProps, focused, hiddenLabel, nonEdit, renderNonEditInput, endAdornmentAction } = props, rest = __rest(props, ["helperText", "helperIconTooltip", "actionProps", "focused", "hiddenLabel", "nonEdit", "renderNonEditInput", "endAdornmentAction"]) // clean up rest of props for MuiAutocomplete tag
     ;
     // prevents DOM warning for error=boolean
     rest.error = rest.error ? 1 : 0;
+    // create a unique id for the autocomplete component if not provided
+    props.id || (props.id = `autocomplete-${((_b = react_1.default.createRef().current) === null || _b === void 0 ? void 0 : _b.id) || Math.random().toString(36).substring(7)}`);
     const [isFocus, setIsFocus] = react_1.default.useState(false);
-    const helperTextId = props.helperText && props.id ? `${props.id}-helper-text` : undefined;
+    const helperTextId = props.helperText ? `${props.id}-helper-text` : undefined;
     const muiFormControlProps = getMuiFormControlProps(props);
     const inputLabelAndActionProps = getInputLabelAndActionProps(props, isFocus);
     const textfieldRef = react_1.default.useRef(null);
@@ -129,6 +132,7 @@ const Autocomplete = (_a) => {
                         nonEdit, size: props.size, autoFocus: props.autoFocus, renderNonEditInput,
                         endAdornmentAction, value: props.value });
                     const tooltipTitle = isValueOverFlowing ? ((_a = textfieldRef.current) === null || _a === void 0 ? void 0 : _a.value) || '' : '';
+                    textFieldArgs.inputProps = Object.assign({ 'aria-describedby': props.error ? undefined : helperTextId, 'aria-errormessage': props.error ? helperTextId : undefined }, textFieldArgs.inputProps);
                     return (react_1.default.createElement(Tooltip_1.default, { title: tooltipTitle, tooltipsize: "small" },
                         react_1.default.createElement(TextField_1.default, Object.assign({}, textFieldArgs, { inputRef: textfieldRef }))));
                 } })),
