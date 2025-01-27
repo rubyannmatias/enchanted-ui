@@ -233,7 +233,7 @@ const Select = react_1.default.forwardRef((_a, forwardRef) => {
     return (react_1.default.createElement(FormControl_1.default, Object.assign({}, muiFormControlProps),
         react_1.default.createElement(InputLabelAndAction_1.default, Object.assign({}, inputLabelAndActionProps)),
         renderInput(props, props.id),
-        react_1.default.createElement(FormHelperText_1.default, { id: helperTextId }, props.helperText)));
+        props.helperText && (react_1.default.createElement(FormHelperText_1.default, { id: helperTextId }, props.helperText))));
 });
 Select.defaultProps = {
     margin: 'none',

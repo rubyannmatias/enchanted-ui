@@ -239,7 +239,10 @@ const Header = (_a) => {
                 (startSection === null || startSection === void 0 ? void 0 : startSection.avatar) !== undefined && startSection.avatar,
                 (startSection === null || startSection === void 0 ? void 0 : startSection.title) !== undefined
                     && (react_1.default.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "bottom", title: startSection.title, disableHoverListener: !isOverflowed },
-                        react_1.default.createElement(Typography_1.default, { ref: headerTitleRef, sx: Object.assign({ paddingLeft: ((startSection === null || startSection === void 0 ? void 0 : startSection.withBackButton) || (startSection === null || startSection === void 0 ? void 0 : startSection.avatar)) ? '0px' : '4px', margin: '-4px' }, theme_1.TYPOGRAPHY.subtitle1), "data-testid": HeaderTestIds.HEADER_START_TITLE }, startSection.title))),
+                        react_1.default.createElement(Typography_1.default, { ref: headerTitleRef, variant: "subtitle1", sx: {
+                                paddingLeft: ((startSection === null || startSection === void 0 ? void 0 : startSection.withBackButton) || (startSection === null || startSection === void 0 ? void 0 : startSection.avatar)) ? '0px' : '4px',
+                                margin: '-4px',
+                            }, "data-testid": HeaderTestIds.HEADER_START_TITLE }, startSection.title))),
                 (startSection === null || startSection === void 0 ? void 0 : startSection.subtitle) !== undefined
                     && (react_1.default.createElement(Typography_1.default, { sx: Object.assign(Object.assign({}, theme_1.TYPOGRAPHY.caption), { height: '14px', color: (scopedTheme) => { return scopedTheme.palette.text.secondary; } }), "data-testid": HeaderTestIds.HEADER_START_SUBTITLE }, startSection.subtitle)),
                 ((startSection === null || startSection === void 0 ? void 0 : startSection.favoritesToggleIcon) && react_1.default.isValidElement(startSection.favoritesToggleIcon) && !(startSection === null || startSection === void 0 ? void 0 : startSection.favoritesToggleComponent))
