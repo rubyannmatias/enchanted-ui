@@ -13,11 +13,34 @@
  * See the License for the specific language governing permissions and      *
  * limitations under the License.                                           *
  * ======================================================================== */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
+const react_1 = __importStar(require("react"));
 const material_1 = require("@mui/material");
 const chevron__down_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/chevron--down"));
 const chevron__up_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/chevron--up"));
@@ -118,6 +141,23 @@ const StyledHeader = (0, material_1.styled)(material_1.Box)((props) => {
  */
 const ProgressHeader = (props) => {
     const { totalPercentage, uploadStatus, closeModal, stringLiterals, cancelAll, pauseButton, translation, expanded, toggleButtonClick, } = props;
+    const collapseButtonRef = (0, react_1.useRef)(null);
+    const expandButtonRef = (0, react_1.useRef)(null);
+    const isFirstRender = (0, react_1.useRef)(true);
+    // Sets focus on the collapseIconButton or expandIconButton when `expanded` state changes.
+    // Skips focus on initial render to avoid auto-focusing on page refresh.
+    (0, react_1.useEffect)(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        if (expanded && collapseButtonRef.current) {
+            collapseButtonRef.current.focus();
+        }
+        else if (!expanded && expandButtonRef.current) {
+            expandButtonRef.current.focus();
+        }
+    }, [expanded]);
     /**
      * Renders an icon based on the total percentage value.
      * @returns The icon component based on the total percentage value.
@@ -160,16 +200,18 @@ const ProgressHeader = (props) => {
                 expanded && (react_1.default.createElement(Tooltip_1.default, { title: translation === null || translation === void 0 ? void 0 : translation.collapseTooltip, tooltipsize: "small" },
                     react_1.default.createElement(IconButton_1.default, { "data-testid": "collapseIconButton", onClick: toggleButtonClick, onKeyDown: (e) => {
                             if (e.key === 'Enter') {
+                                e.preventDefault();
                                 toggleButtonClick();
                             }
-                        } },
+                        }, ref: collapseButtonRef },
                         react_1.default.createElement(chevron__up_1.default, null)))),
                 !expanded && (react_1.default.createElement(Tooltip_1.default, { title: translation === null || translation === void 0 ? void 0 : translation.expandTooltip, tooltipsize: "small" },
                     react_1.default.createElement(IconButton_1.default, { "data-testid": "expandIconButton", onClick: toggleButtonClick, onKeyDown: (e) => {
                             if (e.key === 'Enter') {
+                                e.preventDefault();
                                 toggleButtonClick();
                             }
-                        } },
+                        }, ref: expandButtonRef },
                         react_1.default.createElement(chevron__down_1.default, null))))),
             react_1.default.createElement(Tooltip_1.default, { title: translation === null || translation === void 0 ? void 0 : translation.closeButtonTooltip, tooltipsize: "small" },
                 react_1.default.createElement(IconButton_1.default, { onClick: closeModal, onKeyDown: (e) => {

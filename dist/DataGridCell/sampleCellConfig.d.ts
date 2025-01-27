@@ -73,3 +73,29 @@ export declare const sampleRowMultiStartIconAndTooltip: {
     'iconEnd-column5': React.JSX.Element;
 }[];
 export declare const sampleColumnsMultiStartIconAndTooltip: ExtendedGridColDef[];
+export declare const sampleColumns: ExtendedGridColDef[];
+export declare const sampleRows: {
+    id: string;
+    tableHead: string;
+    'iconEnd-tableHead': React.JSX.Element;
+    'avatar-tableHead': React.JSX.Element;
+    'iconStart-tableHead': React.JSX.Element;
+    'endActions-tableHead': React.JSX.Element[];
+    'subTitle-tableHead': string;
+}[];
+export declare const sampleColumnsForSubTitle: ExtendedGridColDef[];
+export declare const sampleRowsForSubTitle: {
+    withTooltip: string;
+    'iconEnd-withTooltip': React.JSX.Element;
+    'avatar-withTooltip': React.JSX.Element;
+    'iconStart-withTooltip': React.JSX.Element;
+    'endActions-withTooltip': React.JSX.Element[];
+    'subTitle-withTooltip': string;
+    id: string;
+    tableHead: string;
+    'iconEnd-tableHead': React.JSX.Element;
+    'avatar-tableHead': React.JSX.Element;
+    'iconStart-tableHead': React.JSX.Element;
+    'endActions-tableHead': React.JSX.Element[];
+    'subTitle-tableHead': string;
+}[];

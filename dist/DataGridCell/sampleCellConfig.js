@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sampleColumnsMultiStartIconAndTooltip = exports.sampleRowMultiStartIconAndTooltip = exports.columnTest5 = exports.columnTest4 = exports.columnTest3 = exports.columnTest2 = exports.columnTest1 = exports.sampleRowsDisabled = exports.sampleRowContainsAll = exports.sampleColumnsModifiedRight = exports.sampleColumnsByDefaultLeft = exports.allColumnConfig = exports.endActionColumnConfig = exports.iconColumnConfig = exports.avatarColumnConfig = exports.iconEndColumnConfig = exports.baseColumnConfig = void 0;
+exports.sampleRowsForSubTitle = exports.sampleColumnsForSubTitle = exports.sampleRows = exports.sampleColumns = exports.sampleColumnsMultiStartIconAndTooltip = exports.sampleRowMultiStartIconAndTooltip = exports.columnTest5 = exports.columnTest4 = exports.columnTest3 = exports.columnTest2 = exports.columnTest1 = exports.sampleRowsDisabled = exports.sampleRowContainsAll = exports.sampleColumnsModifiedRight = exports.sampleColumnsByDefaultLeft = exports.allColumnConfig = exports.endActionColumnConfig = exports.iconColumnConfig = exports.avatarColumnConfig = exports.iconEndColumnConfig = exports.baseColumnConfig = void 0;
 /* ======================================================================== *
  * Copyright 2024 HCL America Inc.                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
@@ -53,9 +53,11 @@ const rain__scattered__night_1 = __importDefault(require("@hcl-software/enchante
 const road__weather_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/road--weather"));
 const roadmap_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/roadmap"));
 const rocket_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/rocket"));
+const user_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/user"));
 const Avatar_1 = __importStar(require("../Avatar"));
 const IconButton_1 = __importDefault(require("../IconButton"));
 const DataGridCell_1 = __importDefault(require("./DataGridCell"));
+const DataGrid_1 = require("../DataGrid");
 exports.baseColumnConfig = {
     field: 'baseColumn',
     headerName: 'Base',
@@ -235,4 +237,50 @@ exports.sampleColumnsMultiStartIconAndTooltip = [
     Object.assign({}, exports.columnTest3),
     Object.assign({}, exports.columnTest4),
     Object.assign({}, exports.columnTest5),
+];
+exports.sampleColumns = [
+    {
+        field: 'tableHead',
+        headerName: 'Table Head',
+        width: 280,
+        iconEnd: true,
+        avatar: true,
+        iconStart: true,
+        endActions: true,
+        subTitle: true,
+        renderCell: (cellValues) => { return react_1.default.createElement(DataGridCell_1.default, Object.assign({}, cellValues)); },
+        headerClassName: (params) => {
+            return params.colDef.showSortingIcon
+                ? DataGrid_1.alwaysVisibleColHeadIconModifier
+                : '';
+        },
+    },
+];
+exports.sampleRows = [
+    {
+        id: '1',
+        tableHead: 'Jon Snow',
+        'iconEnd-tableHead': react_1.default.createElement(star_1.default, null),
+        'avatar-tableHead': react_1.default.createElement(Avatar_1.default, { variant: "rounded", iconImage: react_1.default.createElement(user_1.default, null) }),
+        'iconStart-tableHead': react_1.default.createElement(document__tasks_1.default, null),
+        'endActions-tableHead': [
+            react_1.default.createElement(IconButton_1.default, { tabIndex: 0 },
+                react_1.default.createElement(edit_1.default, null)),
+            react_1.default.createElement(IconButton_1.default, { tabIndex: 0 },
+                react_1.default.createElement(overflow_menu__horizontal_1.default, null)),
+        ],
+        'subTitle-tableHead': 'Fictional character',
+    },
+];
+exports.sampleColumnsForSubTitle = [
+    exports.sampleColumns[0],
+    Object.assign(Object.assign({}, exports.sampleColumns[0]), { field: 'withTooltip', headerName: 'With Tooltip' }),
+];
+exports.sampleRowsForSubTitle = [
+    Object.assign(Object.assign({}, exports.sampleRows[0]), { withTooltip: 'Jon Snow', 'iconEnd-withTooltip': react_1.default.createElement(star_1.default, null), 'avatar-withTooltip': react_1.default.createElement(Avatar_1.default, { variant: "rounded", iconImage: react_1.default.createElement(user_1.default, null) }), 'iconStart-withTooltip': react_1.default.createElement(document__tasks_1.default, null), 'endActions-withTooltip': [
+            react_1.default.createElement(IconButton_1.default, { tabIndex: 0 },
+                react_1.default.createElement(edit_1.default, null)),
+            react_1.default.createElement(IconButton_1.default, { tabIndex: 0 },
+                react_1.default.createElement(overflow_menu__horizontal_1.default, null)),
+        ], 'subTitle-withTooltip': 'Jon Snow was the son of Rhaegar Targaryen and Lyanna Stark' }),
 ];

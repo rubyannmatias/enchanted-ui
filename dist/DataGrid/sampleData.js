@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.processRow = exports.sampleMinimalRows = exports.sampleRows = exports.sampleColumns = void 0;
+exports.sampleColumnsWithSubTitle = exports.sampleRowsWithSubTitle = exports.processRow = exports.sampleMinimalRows = exports.sampleRows = exports.sampleColumns = void 0;
 const react_1 = __importDefault(require("react"));
 const document__tasks_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/document--tasks"));
 const edit_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/edit"));
@@ -242,7 +242,7 @@ exports.sampleMinimalRows = [
         ],
     },
 ];
-const processRow = (rows, isMinimal) => {
+const processRow = (rows, isMinimal, subTitle) => {
     const rowsHolder = rows.map((item) => {
         if (item.id) {
             item['iconStart-id'] = react_1.default.createElement(document__tasks_1.default, null);
@@ -263,6 +263,9 @@ const processRow = (rows, isMinimal) => {
                         react_1.default.createElement(overflow_menu__horizontal_1.default, null)),
                 ];
             }
+            if (subTitle) {
+                item['subTitle-fullName'] = 'Fictional character';
+            }
         }
         if (item.lastName) {
             item['iconEnd-lastName'] = react_1.default.createElement(document__tasks_1.default, null);
@@ -272,3 +275,10 @@ const processRow = (rows, isMinimal) => {
     return rowsHolder;
 };
 exports.processRow = processRow;
+exports.sampleRowsWithSubTitle = (0, exports.processRow)(exports.sampleRows, false, true);
+exports.sampleColumnsWithSubTitle = exports.sampleColumns.map((col) => {
+    if (col.field === 'fullName') {
+        return Object.assign(Object.assign({}, col), { subTitle: true });
+    }
+    return col;
+});
