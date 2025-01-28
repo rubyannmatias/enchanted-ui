@@ -241,10 +241,12 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
     const [zoomOutDisable, setZoomOutDisable] = React.useState(false);
     const [zoomButtonTooltip, setZoomButtonTooltip] = React.useState('');
     const [zoomToFitPercentage, setZoomToFitPercentage] = React.useState(zoomDefault);
+    const [zoomTrigger, setZoomTrigger] = React.useState(true);
     const imageContainerRef = React.useRef(null);
     const videoRef = React.useRef(null);
     const imageRef = React.useRef(null);
     const [isAssetFinishedRendering, setIsAssetFinishedRendering] = React.useState(false);
+    const [showMessage, setshowMessage] = React.useState(false);
     const handleResize = () => {
         var _a, _b, _c, _d, _e, _f;
         if (videoRef.current && imageContainerRef.current) {
@@ -276,8 +278,15 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
         const zoomText = zoomPercentage === zoomDefault ? tooltipTexts.zoomToFit : tooltipTexts.viewActualSize;
         setZoomButtonTooltip(zoomText);
     }, [zoomPercentage]);
+    React.useEffect(() => {
+        if (!zoomTrigger) {
+            setshowMessage(false);
+            setZoomTrigger(true);
+        }
+    }, [zoomTrigger]);
     // Function to handle zooming in on the image
     const handleZoomIn = () => {
+        setshowMessage(true);
         // Finds the next highest zoom percentage
         const zoomInNumber = zoomOptions.find((element) => {
             return element > zoomPercentage;
@@ -289,9 +298,11 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
             setZoomPercentage(zoomInNumber);
         }
         setZoomOutDisable(false);
+        setZoomTrigger(false);
     };
     // Function to handle zooming out on the image
     const handleZoomOut = () => {
+        setshowMessage(true);
         // We need to reverse the zoom options array to get the next lowest available
         const reversed = [...zoomOptions].reverse();
         // Finds the next lowest zoom percentage
@@ -305,6 +316,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
             setZoomPercentage(zoomOutNumber);
         }
         setZoomInDisable(false);
+        setZoomTrigger(false);
     };
     // Sets the zooming of the image based on 'view actual size' or 'fit to size' into AssetContainer
     const zoomPercentageFit = () => {
@@ -544,6 +556,10 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomOut },
                             React.createElement(IconButton_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_OUT_BUTTON, variant: IconButton_1.IconButtonVariants.WITH_PADDING, inversecolors: true, disabled: zoomOutDisable, onClick: handleZoomOut, showendicon: 0 },
                                 React.createElement(zoom__out_1.default, null))),
+                        showMessage && (React.createElement(material_1.Box, { component: "div", role: "alert", sx: {
+                                // The followine css is used to hide the status message from the DOM but still make it accessible to screen readers
+                                position: 'absolute', top: '-1000px', height: '1px', overflow: 'hidden',
+                            }, "aria-live": "assertive", "aria-atomic": "true" }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_TOOLTIP_TEXT, tooltipsize: "small", placement: "top", title: zoomButtonTooltip },
                             React.createElement(Button_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_PERCENT_BUTTON, variant: "text", size: "small", onClick: zoomPercentageFit }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomIn },
