@@ -182,7 +182,7 @@ const renderInput = (props, id) => {
     if (!paperPropsStyle.marginTop) {
         paperPropsStyle.marginTop = defaultStyle.marginTop;
     }
-    return (react_1.default.createElement(Select_1.default, Object.assign({}, selectProps, { MenuProps: Object.assign(Object.assign({}, selectProps.MenuProps), { transformOrigin: { vertical: 'top', horizontal: theme.direction === theme_1.ThemeDirectionType.RTL ? 'right' : 'left' }, anchorOrigin: { vertical: 'top', horizontal: theme.direction === theme_1.ThemeDirectionType.RTL ? 'right' : 'left' }, PaperProps: {
+    return (react_1.default.createElement(Select_1.default, Object.assign({}, selectProps, { "aria-label": typeof props.label === 'string' ? props.label : props.placeholder, inputProps: { id: props.id }, MenuProps: Object.assign(Object.assign({}, selectProps.MenuProps), { transformOrigin: { vertical: 'top', horizontal: theme.direction === theme_1.ThemeDirectionType.RTL ? 'right' : 'left' }, anchorOrigin: { vertical: 'top', horizontal: theme.direction === theme_1.ThemeDirectionType.RTL ? 'right' : 'left' }, PaperProps: {
                 style: paperPropsStyle,
                 elevation: 2,
                 ref: (node) => {
