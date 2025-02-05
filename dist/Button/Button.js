@@ -77,7 +77,7 @@ const getMuiButtonThemeOverrides = () => {
         MuiButton: {
             styleOverrides: {
                 root: ({ ownerState, theme }) => {
-                    return (Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ borderRadius: '2px', padding: '6px 12px', height: '28px', boxSizing: 'border-box' }, theme.typography.subtitle2), { textTransform: 'none', '&.Mui-focusVisible, &.force-to-focus': {
+                    return (Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ borderRadius: '2px', padding: '6px 12px', maxHeight: '28px', boxSizing: 'border-box' }, theme.typography.subtitle2), { textTransform: 'none', '&.Mui-focusVisible, &.force-to-focus': {
                             outline: `${theme.palette.primary.main} 1px solid`,
                             outlineOffset: '2px',
                         }, '& .MuiButtonBase-root:disabled': {
