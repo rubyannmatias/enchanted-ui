@@ -62,7 +62,8 @@ const getMuiTablePaginationThemeOverrides = () => {
                         '& .MuiTablePagination-toolbar': {
                             margin: '4px 12px',
                             padding: 0,
-                            position: 'relative',
+                            display: 'flex',
+                            justifyContent: 'flex-end',
                             minHeight: '28px',
                             '& .MuiTablePagination-spacer': {
                                 display: 'none',
@@ -77,8 +78,6 @@ const getMuiTablePaginationThemeOverrides = () => {
                                 display: 'none',
                             },
                             '& [data-testid=tablePaginationActionsRoot]': {
-                                position: 'absolute',
-                                right: '0',
                                 display: 'inline-flex',
                                 justifyContent: 'space-between',
                                 width: '100%',
