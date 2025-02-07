@@ -18,6 +18,7 @@ export declare enum ButtonTestIds {
  */
 export type ButtonProps = MuiButtonProps & {
     hover?: boolean;
+    inversecolors?: boolean | 0 | 1;
 };
 declare const Button: React.FC<ButtonProps>;
 export declare const getMuiButtonThemeOverrides: () => Components<Omit<Theme, 'components'>>;

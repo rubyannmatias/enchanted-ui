@@ -510,7 +510,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                         backIconToolTip: tooltipTexts.backButton,
                     }, middleSection: [
                         React.createElement(Typography_1.default, { color: "textSecondary", variant: "subtitle2", marginRight: -1 }, renditionLabel),
-                        React.createElement(Select_1.default, { "data-testid": PreviewTestIds.PREVIEW_RENDITION_DROPDOWN, hiddenLabel: true, required: true, value: (_b = currentRendition.type) !== null && _b !== void 0 ? _b : '', onChange: handleOnChangeSelect, disabled: !isCurrentAssetReady || reactComponent !== undefined }, currentAsset.renditions.map((rendition) => {
+                        React.createElement(Select_1.default, { label: renditionLabel, id: PreviewTestIds.PREVIEW_RENDITION_DROPDOWN, "data-testid": PreviewTestIds.PREVIEW_RENDITION_DROPDOWN, role: "listbox", hiddenLabel: true, required: true, value: (_b = currentRendition.type) !== null && _b !== void 0 ? _b : '', onChange: handleOnChangeSelect, disabled: !isCurrentAssetReady || reactComponent !== undefined }, currentAsset.renditions.map((rendition) => {
                             return (React.createElement(MenuItem_1.default, { key: rendition.type, value: rendition.type, size: "small" }, rendition.type ? (React.createElement(ListItemText_1.default, { primary: `${rendition.type} (${rendition.dimension})` })) : ''));
                         })),
                     ], hideMiddleSection: isVideo, endSection: [
@@ -561,7 +561,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                                 position: 'absolute', top: '-1000px', height: '1px', overflow: 'hidden',
                             }, "aria-live": "assertive", "aria-atomic": "true" }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_TOOLTIP_TEXT, tooltipsize: "small", placement: "top", title: zoomButtonTooltip },
-                            React.createElement(Button_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_PERCENT_BUTTON, variant: "text", size: "small", onClick: zoomPercentageFit }, `${zoomPercentage}%`)),
+                            React.createElement(Button_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_PERCENT_BUTTON, variant: "text", size: "small", onClick: zoomPercentageFit, inversecolors: true }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomIn },
                             React.createElement(IconButton_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_IN_BUTTON, variant: IconButton_1.IconButtonVariants.WITH_PADDING, inversecolors: true, disabled: zoomInDisable, onClick: handleZoomIn, showendicon: 0 },
                                 React.createElement(zoom__in_1.default, null))))))))));
