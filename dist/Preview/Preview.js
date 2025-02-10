@@ -280,7 +280,9 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
     }, [zoomPercentage]);
     React.useEffect(() => {
         if (!zoomTrigger) {
-            setshowMessage(false);
+            setTimeout(() => {
+                setshowMessage(false);
+            }, 3000); // Set the timeout duration for 3 second so that screen reader can read the message
             setZoomTrigger(true);
         }
     }, [zoomTrigger]);
@@ -320,6 +322,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
     };
     // Sets the zooming of the image based on 'view actual size' or 'fit to size' into AssetContainer
     const zoomPercentageFit = () => {
+        setshowMessage(true);
         if (zoomButtonTooltip === tooltipTexts.viewActualSize) {
             // View actual size
             setZoomPercentage(zoomDefault);
@@ -331,6 +334,7 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
         // Sets Zoom in and Zoom out button to be clickable
         setZoomInDisable(false);
         setZoomOutDisable(false);
+        setZoomTrigger(false);
     };
     // Calculates image zoom to fit percentage
     const calculateImagePercentage = () => {
@@ -550,16 +554,16 @@ const Preview = ({ open, reactComponent, renditionLabel, assets, index, isSelect
                                 React.createElement(StyledArrowButton, { "data-testid": PreviewTestIds.PREVIEW_NEXT_BUTTON, disabled: isNextDisabled || isVersionComparison, onClick: handleNextAsset, showendicon: 0 },
                                     React.createElement(chevron__right_1.default, null))))))),
                 (!isVideo && isCurrentAssetReady && reactComponent === undefined) && (React.createElement(material_1.Grid, { container: true, justifyContent: "center" },
+                    (React.createElement(material_1.Box, { component: "div", role: "status", sx: {
+                            // The followine css is used to hide the status message from the DOM but still make it accessible to screen readers
+                            position: 'absolute', top: '-1000px', height: '1px', overflow: 'hidden',
+                        }, "aria-live": "assertive", "aria-atomic": "true" }, showMessage && `Zoomed percentage ${zoomPercentage}%`)),
                     React.createElement(ZoomContainer, { sx: {
                             position: isVersionComparison ? 'absolute' : 'fixed',
                         } },
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomOut },
                             React.createElement(IconButton_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_OUT_BUTTON, variant: IconButton_1.IconButtonVariants.WITH_PADDING, inversecolors: true, disabled: zoomOutDisable, onClick: handleZoomOut, showendicon: 0 },
                                 React.createElement(zoom__out_1.default, null))),
-                        showMessage && (React.createElement(material_1.Box, { component: "div", role: "alert", sx: {
-                                // The followine css is used to hide the status message from the DOM but still make it accessible to screen readers
-                                position: 'absolute', top: '-1000px', height: '1px', overflow: 'hidden',
-                            }, "aria-live": "assertive", "aria-atomic": "true" }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_TOOLTIP_TEXT, tooltipsize: "small", placement: "top", title: zoomButtonTooltip },
                             React.createElement(Button_1.default, { "data-testid": PreviewTestIds.PREVIEW_ZOOM_PERCENT_BUTTON, variant: "text", size: "small", onClick: zoomPercentageFit, inversecolors: true }, `${zoomPercentage}%`)),
                         React.createElement(Tooltip_1.default, { tooltipsize: "small", placement: "top", title: tooltipTexts.zoomIn },

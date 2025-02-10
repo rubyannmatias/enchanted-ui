@@ -86,7 +86,7 @@ const DataGridCell = (props) => {
     const isAlignRight = colDef.align === 'right';
     return (react_1.default.createElement(material_1.Grid // parent grid of our custom cell
     , { tabIndex: props.tabIndex, onMouseEnter: handleOnActive, onMouseLeave: handleOnInactive, onFocus: handleOnActive, onKeyDown: (evt) => { return handleOnCellKeydown(evt); }, sx: (theme) => {
-            return Object.assign(Object.assign(Object.assign(Object.assign({}, theme.typography.body2), { fontColor: theme.palette.text.primary, outline: 'none', width: '100%', height: '100%', alignItems: 'center', display: 'flex', '& .MuiCheckbox-root': {
+            return Object.assign(Object.assign(Object.assign(Object.assign({}, theme.typography.body2), { minHeight: '36px', fontColor: theme.palette.text.primary, outline: 'none', width: '100%', height: '100%', alignItems: 'center', display: 'flex', '& .MuiCheckbox-root': {
                     marginRight: '16px',
                 } }), (row.disabled && {
                 color: theme.palette.text.disabled,
