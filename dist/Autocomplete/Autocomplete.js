@@ -125,15 +125,15 @@ const Autocomplete = (_a) => {
                     setIsFocus(false);
                 }, clearIcon: props.clearIcon ? props.clearIcon : react_1.default.createElement(close_1.default, { color: "action" }), popupIcon: react_1.default.createElement(caret__down_1.default, { color: "action" }), renderInput: (params) => {
                     var _a;
-                    const { InputProps, inputProps } = params;
-                    const inputPropsValue = props.renderOption ? {} : { value: props.value };
                     const textFieldArgs = Object.assign(Object.assign({}, params), { placeholder: props.placeholder, error: Boolean(props.error), required: props.required, fullWidth: props.fullWidth, sx: props.sx, focused,
                         hiddenLabel,
                         helperIconTooltip,
                         actionProps,
                         nonEdit, size: props.size, autoFocus: props.autoFocus, renderNonEditInput,
-                        endAdornmentAction, value: props.value, InputProps: Object.assign(Object.assign({}, InputProps), { inputProps: Object.assign(Object.assign({}, inputProps), inputPropsValue) }) });
+                        endAdornmentAction, value: props.value });
                     const tooltipTitle = isValueOverFlowing ? ((_a = textfieldRef.current) === null || _a === void 0 ? void 0 : _a.value) || '' : '';
+                    const inputPropsValue = props.renderOption ? {} : { value: props.value };
+                    textFieldArgs.inputProps = Object.assign(Object.assign({ 'aria-describedby': props.error ? undefined : helperTextId, 'aria-errormessage': props.error ? helperTextId : undefined }, textFieldArgs.inputProps), inputPropsValue);
                     return (react_1.default.createElement(Tooltip_1.default, { title: tooltipTitle, tooltipsize: "small" },
                         react_1.default.createElement(TextField_1.default, Object.assign({}, textFieldArgs, { inputRef: textfieldRef }))));
                 } })),
