@@ -84,7 +84,7 @@ const getMuiButtonThemeOverrides = () => {
         MuiButton: {
             styleOverrides: {
                 root: ({ ownerState, theme }) => {
-                    return (Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ borderRadius: '2px', padding: '6px 12px' }, theme.typography.subtitle2), { textTransform: 'none', maxHeight: '28px', boxSizing: 'border-box', lineHeight: '17px', '&.Mui-focusVisible, &.force-to-focus': {
+                    return (Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ borderRadius: '2px', padding: '6px 12px' }, theme.typography.subtitle2), { textTransform: 'none', maxHeight: '28px', boxSizing: 'border-box', lineHeight: '17px', '&.Mui-focusVisible, &.force-to-focus': {
                             outline: `${ownerState.inversecolors ? theme.palette.action.selectedInverse : theme.palette.action.selected} 1px solid`,
                             outlineOffset: '2px',
                         }, '& .MuiButtonBase-root:disabled': {
@@ -135,6 +135,101 @@ const getMuiButtonThemeOverrides = () => {
                             outline: `${ownerState.inversecolors ? theme.palette.action.selectedInverse : theme.palette.action.selected} 1px solid`,
                             outlineOffset: '2px',
                             backgroundColor: ownerState.inversecolors ? theme.palette.action.hoverInverse : theme.palette.action.hover,
+                        },
+                    })), (ownerState.size === 'neutral' && {
+                        height: '20px',
+                        width: 'auto',
+                        minWidth: 'auto',
+                        padding: '0 4px',
+                    })), (ownerState.size === 'neutral' && ownerState.variant === 'contained' && (!ownerState.color || ownerState.color === 'primary') && {
+                        color: theme.palette.text.secondary,
+                        backgroundColor: theme.palette.action.disabledOpacityModified,
+                        border: 'none',
+                        '&:hover': {
+                            backgroundColor: theme.palette.action.disableOpacityHover,
+                            color: theme.palette.text.primary,
+                        },
+                        '&.Mui-focusVisible, &.force-to-focus': {
+                            backgroundColor: theme.palette.action.disabledOpacityModified,
+                            color: theme.palette.text.secondary,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.force-to-focusHover': {
+                            backgroundColor: theme.palette.action.disableOpacityHover,
+                            color: theme.palette.text.primary,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.Mui-disabled': {
+                            backgroundColor: theme.palette.action.disabledBackground,
+                            color: theme.palette.text.disabled,
+                        },
+                    })), (ownerState.size === 'neutral' && ownerState.variant === 'outlined' && (!ownerState.color || ownerState.color === 'primary') && {
+                        color: theme.palette.text.secondary,
+                        backgroundColor: 'transparent',
+                        borderColor: theme.palette.text.secondary,
+                        '&:hover': {
+                            backgroundColor: theme.palette.action.hover,
+                            color: theme.palette.text.primary,
+                            borderColor: theme.palette.text.primary,
+                        },
+                        '&.Mui-focusVisible, &.force-to-focus': {
+                            backgroundColor: 'transparent',
+                            color: theme.palette.text.secondary,
+                            borderColor: theme.palette.text.secondary,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.force-to-focusHover': {
+                            backgroundColor: theme.palette.action.hover,
+                            color: theme.palette.text.primary,
+                            borderColor: theme.palette.text.primary,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.Mui-disabled': {
+                            backgroundColor: 'transparent',
+                            color: theme.palette.action.disabledBackground,
+                            borderColor: theme.palette.action.disabledBackground,
+                        },
+                    })), (ownerState.size === 'neutral' && ownerState.variant === 'contained' && ownerState.color && ownerState.color !== 'primary' && {
+                        color: theme.palette.action.selected,
+                        backgroundColor: theme.palette.action.selectedOpacityModified,
+                        border: 'none',
+                        '&:hover': {
+                            backgroundColor: theme.palette.action.selectedOpacityHover,
+                        },
+                        '&.Mui-focusVisible, &.force-to-focus': {
+                            backgroundColor: theme.palette.action.selectedOpacityModified,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.force-to-focusHover': {
+                            backgroundColor: theme.palette.action.selectedOpacityHover,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                    })), (ownerState.size === 'neutral' && ownerState.variant === 'outlined' && ownerState.color && ownerState.color !== 'primary' && {
+                        color: theme.palette.action.selected,
+                        backgroundColor: theme.palette.action.selectedOpacityModified,
+                        borderColor: theme.palette.action.selected,
+                        '&:hover': {
+                            backgroundColor: theme.palette.action.selectedOpacityHover,
+                            borderColor: theme.palette.action.selected,
+                        },
+                        '&.Mui-focusVisible, &.force-to-focus': {
+                            backgroundColor: theme.palette.action.selectedOpacityModified,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.force-to-focusHover': {
+                            backgroundColor: theme.palette.action.selectedOpacityHover,
+                            outline: `${theme.palette.action.selected} 1px solid`,
+                            outlineOffset: '2px',
+                        },
+                        '&.Mui-disabled': {
+                            backgroundColor: theme.palette.action.disabledBackground,
                         },
                     })));
                 },

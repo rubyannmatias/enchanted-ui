@@ -1,6 +1,11 @@
 import React from 'react';
 import { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 import { Components, Theme } from '@mui/material';
+declare module '@mui/material/Button' {
+    interface ButtonPropsSizeOverrides {
+        neutral: true;
+    }
+}
 export declare enum ButtonVariants {
     CONTAINED = "contained",
     OUTLINED = "outlined",

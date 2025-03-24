@@ -43,7 +43,7 @@ const DataGridCell = (props) => {
     const colDef = props.colDef;
     const { row } = props; // get row values
     const handleOnCellKeydown = react_1.default.useCallback((event) => {
-        var _a, _b, _c;
+        var _a, _b, _c, _d, _e, _f;
         const target = event.target;
         // if cell has action button and if user press tab we should not hide action button
         if ((event.key === 'Tab' || event.key === 'ArrowDown' || event.key === 'ArrowUp')
@@ -55,6 +55,12 @@ const DataGridCell = (props) => {
             setIsActive(true);
         }
         else {
+            setIsActive(false);
+        }
+        // Check if the focus is moving to the next row, the endActions should be hidden
+        const parentRow = target.closest('.MuiDataGrid-row');
+        const nextRow = parentRow === null || parentRow === void 0 ? void 0 : parentRow.nextSibling;
+        if (nextRow && ((_f = (_e = (_d = target.parentElement) === null || _d === void 0 ? void 0 : _d.parentElement) === null || _e === void 0 ? void 0 : _e.parentElement) === null || _f === void 0 ? void 0 : _f.nextSibling) && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
             setIsActive(false);
         }
     }, []);
@@ -137,11 +143,12 @@ const DataGridCell = (props) => {
                 marginRight: '0',
             })) }, row[`iconEnd-${colDef.field}`])),
         colDef.endActions && row[`endActions-${colDef.field}`] && (react_1.default.createElement(material_1.Grid // this grid is for the container of end action button at the end of the cell
-        , { className: colDef.endActions ? 'MuiDataGrid-cell--withEndActions' : '', "aria-hidden": !(isActive && colDef.endActions && !hideEndActions && row[`endActions-${colDef.field}`].length > 0), sx: (theme) => {
+        , { className: colDef.endActions ? 'MuiDataGrid-cell--withEndActions' : '', "aria-hidden": !(isActive && !row.disabled && colDef.endActions && !hideEndActions && row[`endActions-${colDef.field}`].length > 0), sx: (theme) => {
                 return Object.assign(Object.assign({ display: 'none', alignItems: 'center', background: 'transparent' }, (isAlignRight ? Object.assign({ marginRight: '0' }, (colDef.iconEnd && { paddingLeft: '12px' })) : {
                     marginLeft: 'auto',
                     marginRight: '0',
-                })), (isActive && colDef.endActions && !hideEndActions && row[`endActions-${colDef.field}`].length > 0 && {
+                })), (isActive && !row.disabled
+                    && colDef.endActions && !hideEndActions && row[`endActions-${colDef.field}`].length > 0 && {
                     display: 'flex',
                 }));
             } }, row[`endActions-${colDef.field}`] && row[`endActions-${colDef.field}`].map((elem, index) => {

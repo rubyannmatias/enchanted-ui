@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sampleColumnsWithSubTitle = exports.sampleRowsWithSubTitle = exports.processRow = exports.sampleMinimalRows = exports.sampleRows = exports.sampleColumns = void 0;
+exports.sampleRowsWithDisabledRow = exports.sampleColumnsWithSubTitle = exports.sampleRowsWithSubTitle = exports.processRow = exports.sampleMinimalRows = exports.sampleRows = exports.sampleColumns = void 0;
 const react_1 = __importDefault(require("react"));
 const document__tasks_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/document--tasks"));
 const edit_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/edit"));
@@ -91,6 +91,7 @@ exports.sampleColumns = [
         field: 'age',
         headerName: 'Age',
         flex: 0.5,
+        renderCell: (cellValues) => { return react_1.default.createElement(DataGridCell_1.default, Object.assign({}, cellValues)); },
     },
 ];
 exports.sampleRows = [
@@ -282,3 +283,8 @@ exports.sampleColumnsWithSubTitle = exports.sampleColumns.map((col) => {
     }
     return col;
 });
+const disabledRow = [
+    ...exports.sampleRows,
+    Object.assign(Object.assign({}, exports.sampleRows[10]), { disabled: true }),
+];
+exports.sampleRowsWithDisabledRow = (0, exports.processRow)(disabledRow, false, true);

@@ -14,7 +14,7 @@
  * limitations under the License.                                           *
  * ======================================================================== */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTargetElement = void 0;
+exports.findPreviousFocusableRow = exports.findNextFocusableRow = exports.findTargetElement = void 0;
 /**
  * Retrieve Target Element either parent to child or child to parent using the provided classname
  * Will only get the first instance of that element
@@ -44,3 +44,36 @@ const findTargetElement = (target, className, lookForParent, useInclude = false)
     return (0, exports.findTargetElement)(divElement.firstChild, className, lookForParent, useInclude);
 };
 exports.findTargetElement = findTargetElement;
+/**
+   * Finds the next available/focusable row which doesn't have tabindex="-1".
+   * @param currentRow - The current row element.
+   * @returns The next focusable row element or null if none found.
+   */
+const findNextFocusableRow = (currentRow) => {
+    let nextRow = currentRow.nextElementSibling;
+    while (nextRow) {
+        // instead of attribute check it have disabled row class or not
+        if (!nextRow.classList.contains('disabled-row')) {
+            return nextRow;
+        }
+        nextRow = nextRow.nextElementSibling;
+    }
+    return null;
+};
+exports.findNextFocusableRow = findNextFocusableRow;
+/**
+   * Finds the previous available/focusable row which doesn't have tabindex="-1".
+   * @param currentRow - The current row element.
+   * @returns The previous focusable row element or null if none found.
+   */
+const findPreviousFocusableRow = (currentRow) => {
+    let previousRow = currentRow.previousElementSibling;
+    while (previousRow) {
+        if (!previousRow.classList.contains('disabled-row')) {
+            return previousRow;
+        }
+        previousRow = previousRow.previousElementSibling;
+    }
+    return null;
+};
+exports.findPreviousFocusableRow = findPreviousFocusableRow;

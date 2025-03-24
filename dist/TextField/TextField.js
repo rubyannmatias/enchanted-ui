@@ -39,7 +39,6 @@ const utils_1 = require("@mui/utils");
 const styles_1 = require("@mui/material/styles");
 const Typography_1 = __importDefault(require("../Typography"));
 const InputLabelAndAction_1 = __importDefault(require("../prerequisite_components/InputLabelAndAction/InputLabelAndAction"));
-const theme_1 = require("../theme");
 const getMuiTextFieldThemeOverrides = () => {
     return {
         MuiTextField: {
@@ -108,9 +107,7 @@ const getMuiTextFieldThemeOverrides = () => {
         MuiFormHelperText: {
             styleOverrides: {
                 contained: ({ theme }) => {
-                    return Object.assign(Object.assign(Object.assign({}, theme.typography.caption), { color: theme.palette.text.secondary, marginTop: '4px', cursor: 'default', marginLeft: '0px', marginRight: '0px' }), theme.direction === theme_1.ThemeDirectionType.RTL && {
-                        textAlign: 'end',
-                    });
+                    return Object.assign(Object.assign({}, theme.typography.caption), { color: theme.palette.text.secondary, marginTop: '4px', cursor: 'default', marginLeft: '0px', marginRight: '0px', textAlign: 'left' });
                 },
             },
         },
