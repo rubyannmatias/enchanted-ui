@@ -120,22 +120,28 @@ const StyledList = (0, material_1.styled)(List_1.default)((props) => {
         '.MuiListItem-root': {
             '.MuiListItemButton-root': {
                 '.MuiListItemText-root': {
-                    marginRight: '8px',
+                    '& .MuiListItemText-primary': {
+                        maxWidth: '252px',
+                        overflow: 'hidden',
+                        whiteSpace: 'nowrap',
+                        textOverflow: 'ellipsis',
+                    },
+                    '& .MuiListItemText-secondary': {
+                        maxWidth: '252px',
+                        '& span:not(.file-size)': {
+                            display: 'inline',
+                            overflow: 'hidden',
+                            whiteSpace: 'nowrap',
+                            textOverflow: 'ellipsis',
+                        },
+                    },
                     '[data-testid=pending-item-text-primary]': {
                         color: theme.palette.text.disabled,
                     },
                     '& p': Object.assign(Object.assign({}, theme.typography.caption), { '[data-testid=upload-status-label]': {
                             color: theme.palette.success.main,
-                            display: 'inline',
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
                         }, '[data-testid=failed-status-label]': {
                             color: theme.palette.error.main,
-                            display: 'inline',
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
                         }, '[data-testid=pending-item-text-secondary]': {
                             color: theme.palette.text.disabled,
                         }, '[data-testid=learn-more-button]': {
@@ -145,6 +151,9 @@ const StyledList = (0, material_1.styled)(List_1.default)((props) => {
                                 background: 'none',
                             },
                         } }),
+                },
+                '&:hover .MuiListItemText-primary, &:hover .MuiListItemText-secondary': {
+                    width: 'unset',
                 },
                 '.MuiListItemIcon-root': {
                     '.MuiSvgIcon-root': {
@@ -333,28 +342,21 @@ const ProgressItems = (props) => {
         }
         const { iconImage } = getAvatarByFileType(queueItem.name);
         return (react_1.default.createElement(react_1.default.Fragment, { key: `${queueItem.name}_${queueItem.timestamp}` },
-            react_1.default.createElement(ListItem_1.default, { onMouseEnter: () => { return setHover(`${queueItem.name}_${queueItem.timestamp}`); }, onMouseLeave: () => { return setHover(null); }, onFocus: () => { return setFocus(`${queueItem.name}_${queueItem.timestamp}`); }, onBlur: () => { return setFocus(null); }, disablePadding: true, sx: { paddingLeft: (queueItem.type !== ProgressBar_1.ProgressItemType.Folder && folderId === queueItem.collectionId) ? '8px' : '0px' }, hasBorder: true },
-                react_1.default.createElement(ListItemButton_1.default, { size: ListItemButton_1.ListSizes.SMALL, secondaryActionButton: renderHoverIcon(queueItem) },
+            react_1.default.createElement(ListItem_1.default, { disablePadding: true, sx: { paddingLeft: (queueItem.type !== ProgressBar_1.ProgressItemType.Folder && folderId === queueItem.collectionId) ? '8px' : '0px' }, hasBorder: true },
+                react_1.default.createElement(ListItemButton_1.default, { size: ListItemButton_1.ListSizes.SMALL, secondaryActionButton: renderHoverIcon(queueItem), onMouseEnter: () => { return setHover(`${queueItem.name}_${queueItem.timestamp}`); }, onMouseLeave: () => { return setHover(null); }, onFocus: () => { return setFocus(`${queueItem.name}_${queueItem.timestamp}`); }, onBlur: () => { return setFocus(null); } },
                     queueItem.status === ProgressBar_1.EnumUploadStatus.SUCCESS
                         ? (react_1.default.createElement(ListItemAvatar_1.default, null,
                             react_1.default.createElement(Avatar_1.default, { iconImage: queueItem.type === ProgressBar_1.ProgressItemType.Folder ? react_1.default.createElement(folder_1.default, null) : iconImage, color: Avatar_1.AvatarColors.DEFAULT, variant: "rounded", type: Avatar_1.AvatarTypes.ICON, style: { height: '24px', width: '24px' } }))) : (react_1.default.createElement(ListItemAvatar_1.default, null,
                         react_1.default.createElement(Avatar_1.default, { iconImage: queueItem.type === 'folder' ? react_1.default.createElement(folder_1.default, null) : iconImage, color: Avatar_1.AvatarColors.DEFAULT, variant: "rounded", type: Avatar_1.AvatarTypes.ICON, style: { height: '24px', width: '24px', opacity: 0.38 } }))),
                     queueItem.status !== ProgressBar_1.EnumUploadStatus.PENDING
-                        ? (react_1.default.createElement(ListItemText_1.default, { sx: {
-                                '& .MuiListItemText-primary': {
-                                    maxWidth: '240px',
-                                    overflow: 'hidden',
-                                    whiteSpace: 'nowrap',
-                                    textOverflow: 'ellipsis',
-                                },
-                            }, primary: (react_1.default.createElement(Tooltip_1.default, { title: queueItem.name, tooltipsize: "small" },
+                        ? (react_1.default.createElement(ListItemText_1.default, { primary: (react_1.default.createElement(Tooltip_1.default, { title: queueItem.name, tooltipsize: "small" },
                                 react_1.default.createElement("span", null, queueItem.name))), secondary: (react_1.default.createElement(react_1.default.Fragment, null,
-                                queueItem.type !== 'folder' && (react_1.default.createElement("span", { style: { marginRight: '8px' }, "data-testid": "file-size" }, `${fileSizeValueConverter(queueItem.size)}`)),
-                                queueItem.status === ProgressBar_1.EnumUploadStatus.SUCCESS && (react_1.default.createElement("span", { "data-testid": "upload-status-label", style: { maxWidth: '225px' } }, !queueItem.message ? translation === null || translation === void 0 ? void 0 : translation.successLabel : queueItem.message)),
+                                queueItem.type !== 'folder' && (react_1.default.createElement("span", { style: { marginRight: '8px' }, "data-testid": "file-size", className: "file-size" }, `${fileSizeValueConverter(queueItem.size)}`)),
+                                queueItem.status === ProgressBar_1.EnumUploadStatus.SUCCESS && (react_1.default.createElement("span", { "data-testid": "upload-status-label" }, !queueItem.message ? translation === null || translation === void 0 ? void 0 : translation.successLabel : queueItem.message)),
                                 queueItem.status === ProgressBar_1.EnumUploadStatus.PROGRESS && (react_1.default.createElement("span", null, translation === null || translation === void 0 ? void 0 : translation.progressLabel)),
                                 queueItem.status === ProgressBar_1.EnumUploadStatus.FAILURE && (react_1.default.createElement(Tooltip_1.default, { title: queueItem.message, tooltipsize: "small" },
                                     react_1.default.createElement("span", { "data-testid": "failed-status-label", style: {
-                                            maxWidth: showLearnMoreButton ? '165px' : '225px',
+                                            maxWidth: showLearnMoreButton ? '134px' : '252px',
                                         } }, !queueItem.message ? translation === null || translation === void 0 ? void 0 : translation.failureLabel : queueItem.message))),
                                 showLearnMoreButton && (react_1.default.createElement(Tooltip_1.default, { title: literals.learnMoreLabel, tooltipsize: "small" },
                                     react_1.default.createElement(Button_1.default, { style: { marginLeft: '4px', padding: '0px 3px 3px 3px' }, onClick: learnMoreOnFailure, onKeyDown: (event) => {
@@ -363,10 +365,8 @@ const ProgressItems = (props) => {
                                             }
                                         }, "data-testid": "learn-more-button" },
                                         react_1.default.createElement(Typography_1.default, { variant: "caption" }, literals.learnMoreLabel)))))) })) : (react_1.default.createElement(ListItemText_1.default, { primary: (react_1.default.createElement(Tooltip_1.default, { title: queueItem.name, tooltipsize: "small" },
-                            react_1.default.createElement("span", { style: {
-                                    maxWidth: '285px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis',
-                                }, "data-testid": "pending-item-text-primary" }, queueItem.name))), secondary: (react_1.default.createElement(react_1.default.Fragment, null,
-                            queueItem.type !== 'folder' && (react_1.default.createElement("span", { style: { marginRight: '8px' }, "data-testid": "pending-item-text-secondary" }, `${fileSizeValueConverter(queueItem.size)}`)),
+                            react_1.default.createElement("span", { "data-testid": "pending-item-text-primary" }, queueItem.name))), secondary: (react_1.default.createElement(react_1.default.Fragment, null,
+                            queueItem.type !== 'folder' && (react_1.default.createElement("span", { style: { marginRight: '8px' }, className: "file-size", "data-testid": "pending-item-text-secondary" }, `${fileSizeValueConverter(queueItem.size)}`)),
                             react_1.default.createElement("span", null, translation === null || translation === void 0 ? void 0 : translation.pendingLabel))) })),
                     react_1.default.createElement(ListItemIcon_1.default, { "data-testid": "progress-indicator", style: renderHoverIcon(queueItem) !== null
                             && (hover === `${queueItem.name}_${queueItem.timestamp}` || focus === `${queueItem.name}_${queueItem.timestamp}`)

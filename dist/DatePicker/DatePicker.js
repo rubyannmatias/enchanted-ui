@@ -162,6 +162,20 @@ const DatePicker = (_a) => {
     const formatValue = (value, format) => {
         return value.format(format);
     };
+    const focusDialog = () => {
+        window.requestAnimationFrame(() => {
+            const dialog = document.querySelector('.MuiDialog-root') || document.querySelector('.MuiPickersPopper-root');
+            if (dialog) {
+                const focusableElement = dialog.querySelector('button, [tabindex]:not([tabindex="-1"])');
+                if (focusableElement instanceof window.HTMLElement) {
+                    focusableElement.focus();
+                }
+                else if (dialog instanceof window.HTMLElement) {
+                    dialog.focus();
+                }
+            }
+        });
+    };
     const getTextFieldProps = (muiTextFieldProps) => {
         let error = false;
         if (props.value !== null) {
@@ -174,7 +188,7 @@ const DatePicker = (_a) => {
         const textFieldProps = Object.assign(Object.assign({}, muiTextFieldProps), { inputRef: muiTextFieldProps.inputRef, label: props.label, helperText: props.helperText, helperIconTooltip: props.helperIconTooltip, required: props.required, disabled: props.disabled, margin: props.margin, color: props.color, size: props.size, autoComplete: 'off', error: props.error || error, fullWidth: props.fullWidth, unitLabel: props.unitLabel, hiddenLabel: props.hiddenLabel, nonEdit: props.nonEdit, value: props.value !== null ? `${formatValue(props.value, props.format || DEFAULT_FORMAT)}` : '', actionProps: props.actionProps, InputProps: Object.assign({}, muiTextFieldProps.InputProps), inputProps: Object.assign(Object.assign({}, muiTextFieldProps.inputProps), { placeholder: props.format }) });
         return textFieldProps;
     };
-    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, dayOfWeekFormatter: (day) => { return day; }, PaperProps: {
+    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, onOpen: focusDialog, dayOfWeekFormatter: (day) => { return day; }, PaperProps: {
             sx: (theme) => { return getDatePickerStyle(theme, customStyles); },
         }, PopperProps: {
             placement: 'bottom-start',
