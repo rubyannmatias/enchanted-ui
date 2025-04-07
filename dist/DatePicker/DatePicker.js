@@ -188,7 +188,13 @@ const DatePicker = (_a) => {
         const textFieldProps = Object.assign(Object.assign({}, muiTextFieldProps), { inputRef: muiTextFieldProps.inputRef, label: props.label, helperText: props.helperText, helperIconTooltip: props.helperIconTooltip, required: props.required, disabled: props.disabled, margin: props.margin, color: props.color, size: props.size, autoComplete: 'off', error: props.error || error, fullWidth: props.fullWidth, unitLabel: props.unitLabel, hiddenLabel: props.hiddenLabel, nonEdit: props.nonEdit, value: props.value !== null ? `${formatValue(props.value, props.format || DEFAULT_FORMAT)}` : '', actionProps: props.actionProps, InputProps: Object.assign({}, muiTextFieldProps.InputProps), inputProps: Object.assign(Object.assign({}, muiTextFieldProps.inputProps), { placeholder: props.format }) });
         return textFieldProps;
     };
-    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, onOpen: focusDialog, dayOfWeekFormatter: (day) => { return day; }, PaperProps: {
+    const handleClose = () => {
+        setTimeout(() => {
+            const activeElement = document.activeElement;
+            activeElement.blur();
+        }, 100);
+    };
+    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, onOpen: focusDialog, dayOfWeekFormatter: (day) => { return day; }, onClose: handleClose, PaperProps: {
             sx: (theme) => { return getDatePickerStyle(theme, customStyles); },
         }, PopperProps: {
             placement: 'bottom-start',

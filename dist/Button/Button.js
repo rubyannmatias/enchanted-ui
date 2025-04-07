@@ -141,6 +141,7 @@ const getMuiButtonThemeOverrides = () => {
                         width: 'auto',
                         minWidth: 'auto',
                         padding: '0 4px',
+                        fontWeight: 'normal',
                     })), (ownerState.size === 'neutral' && ownerState.variant === 'contained' && (!ownerState.color || ownerState.color === 'primary') && {
                         color: theme.palette.text.secondary,
                         backgroundColor: theme.palette.action.disabledOpacityModified,
