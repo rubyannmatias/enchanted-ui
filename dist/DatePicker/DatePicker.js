@@ -45,6 +45,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const DatePicker_1 = require("@mui/x-date-pickers/DatePicker");
 const dayjs_1 = __importDefault(require("dayjs"));
+const uuid_1 = require("uuid");
 const PickersDay_1 = require("@mui/x-date-pickers/PickersDay");
 const dot_mark_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/dot-mark"));
 const calendar_1 = __importDefault(require("@hcl-software/enchanted-icons/dist/carbon/es/calendar"));
@@ -141,6 +142,7 @@ const getDatePickerStyle = (theme, customStyles) => {
 const DatePicker = (_a) => {
     var props = __rest(_a, []);
     const { customStyles = {} } = props;
+    const popperId = (0, uuid_1.v4)();
     const handleOnKeyDownLeft = (event) => {
         var _a;
         if (event.key === 'ArrowRight') {
@@ -164,7 +166,8 @@ const DatePicker = (_a) => {
     };
     const focusDialog = () => {
         window.requestAnimationFrame(() => {
-            const dialog = document.querySelector('.MuiDialog-root') || document.querySelector('.MuiPickersPopper-root');
+            var _a;
+            const dialog = (_a = document.querySelector(`#datepickerPopper-${popperId}`)) !== null && _a !== void 0 ? _a : document.querySelector('.MuiPickersPopper-root');
             if (dialog) {
                 const focusableElement = dialog.querySelector('button, [tabindex]:not([tabindex="-1"])');
                 if (focusableElement instanceof window.HTMLElement) {
@@ -188,16 +191,11 @@ const DatePicker = (_a) => {
         const textFieldProps = Object.assign(Object.assign({}, muiTextFieldProps), { inputRef: muiTextFieldProps.inputRef, label: props.label, helperText: props.helperText, helperIconTooltip: props.helperIconTooltip, required: props.required, disabled: props.disabled, margin: props.margin, color: props.color, size: props.size, autoComplete: 'off', error: props.error || error, fullWidth: props.fullWidth, unitLabel: props.unitLabel, hiddenLabel: props.hiddenLabel, nonEdit: props.nonEdit, value: props.value !== null ? `${formatValue(props.value, props.format || DEFAULT_FORMAT)}` : '', actionProps: props.actionProps, InputProps: Object.assign({}, muiTextFieldProps.InputProps), inputProps: Object.assign(Object.assign({}, muiTextFieldProps.inputProps), { placeholder: props.format }) });
         return textFieldProps;
     };
-    const handleClose = () => {
-        setTimeout(() => {
-            const activeElement = document.activeElement;
-            activeElement.blur();
-        }, 100);
-    };
-    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, onOpen: focusDialog, dayOfWeekFormatter: (day) => { return day; }, onClose: handleClose, PaperProps: {
+    return (react_1.default.createElement(DatePicker_1.DatePicker, Object.assign({}, props, { reduceAnimations: true, autoFocus: false, onOpen: focusDialog, dayOfWeekFormatter: (day) => { return day; }, PaperProps: {
             sx: (theme) => { return getDatePickerStyle(theme, customStyles); },
         }, PopperProps: {
             placement: 'bottom-start',
+            id: `datepickerPopper-${popperId}`,
         }, componentsProps: {
             actionBar: { actions: ['today'] },
             leftArrowButton: { onKeyDown: handleOnKeyDownLeft },

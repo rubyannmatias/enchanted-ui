@@ -507,11 +507,11 @@ const DataGrid = (_a) => {
         var _a;
         const target = event.target;
         const parentRow = (0, eventUtils_1.findTargetElement)(target, 'MuiDataGrid-row', true);
-        if (!(parentRow === null || parentRow === void 0 ? void 0 : parentRow.classList.contains('disabled-row'))) {
+        if (parentRow && !parentRow.classList.contains('disabled-row') && parentRow.classList.contains('MuiDataGrid-hide-checkbox')) {
             parentRow.classList.remove('MuiDataGrid-hide-checkbox');
         }
         // we need to focus on next focusable row when we are pressing tab from a cell
-        if (parentRow.nextElementSibling && parentRow.nextElementSibling.classList.contains('disabled-row')) {
+        if (parentRow && parentRow.nextElementSibling && parentRow.nextElementSibling.classList.contains('disabled-row')) {
             parentRow.nextElementSibling.setAttribute('tabindex', '-1');
             parentRow.nextElementSibling.setAttribute('aria-disabled', 'true');
         }
