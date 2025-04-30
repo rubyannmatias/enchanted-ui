@@ -132,7 +132,7 @@ const Autocomplete = (_a) => {
                         nonEdit, size: props.size, autoFocus: props.autoFocus, renderNonEditInput,
                         endAdornmentAction, value: props.value });
                     const tooltipTitle = isValueOverFlowing ? ((_a = textfieldRef.current) === null || _a === void 0 ? void 0 : _a.value) || '' : '';
-                    const inputPropsValue = props.renderOption ? {} : { value: props.value };
+                    const inputPropsValue = props.renderOption ? {} : undefined;
                     textFieldArgs.inputProps = Object.assign(Object.assign({ 'aria-describedby': props.error ? undefined : helperTextId, 'aria-errormessage': props.error ? helperTextId : undefined, 'aria-labelledby': props.id ? `${props.id}-label` : undefined }, textFieldArgs.inputProps), inputPropsValue);
                     return (react_1.default.createElement(Tooltip_1.default, { title: tooltipTitle, tooltipsize: "small" },
                         react_1.default.createElement(TextField_1.default, Object.assign({}, textFieldArgs, { inputRef: textfieldRef }))));
